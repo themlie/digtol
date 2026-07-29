@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="tr">
 
 <head>
@@ -78,14 +78,33 @@
 
     <section class="section">
       <div class="wrap">
-        <div class="svc-lead">
-          <div class="eyebrow reveal">TASARIM</div>
-          <h2 class="reveal">Grafik Tasarım Nedir?</h2>
-          <p>İyi bir tasarım, bir markanın sessiz ama en güçlü sözcüsüdür. Logonuz, renkleriniz ve görselleriniz;
-            müşterinizin sizi hatırlama ve size güvenme biçimini doğrudan şekillendirir.</p>
-          <p>Digitol olarak markanıza özgü, akılda kalıcı ve tutarlı bir görsel kimlik tasarlıyoruz. Hazır şablonlarla
-            değil; sektörünüzü ve hedefinizi anlayarak size özel çözümler üretiyoruz.</p>
+        <div class="svc-lead-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center; max-width: 1100px; margin: 0 auto;">
+          <div class="svc-lead-text" style="text-align: left;">
+            <div class="eyebrow" style="margin-bottom: 12px; display: inline-block;">TASARIM</div>
+            <h2 style="font-size: clamp(28px, 4vw, 42px); font-weight: 700; margin-bottom: 24px;">Grafik Tasarım Nedir?</h2>
+            <p style="font-size: 17px; line-height: 1.7; margin-bottom: 20px;">İyi bir tasarım, bir markanın sessiz ama en güçlü sözcüsüdür. Logonuz, renkleriniz ve görselleriniz; müşterinizin sizi hatırlama ve size güvenme biçimini doğrudan şekillendirir.</p>
+            <p style="font-size: 17px; line-height: 1.7;">Digitol olarak markanıza özgü, akılda kalıcı ve tutarlı bir görsel kimlik tasarlıyoruz. Hazır şablonlarla değil; sektörünüzü ve hedefinizi anlayarak size özel çözümler üretiyoruz.</p>
+          </div>
+
+          <!-- MOCKUP SHOWCASE (KÜÇÜLTÜLMÜŞ, KENARLIKSIZ YALIN TASARIM) -->
+          <div class="mockup-showcase reveal" style="perspective: 1000px;">
+            <div class="mockup-frame" style="display: block; position: relative; border-radius: 12px; box-shadow: 0 20px 40px rgba(0,0,0,0.5), 0 0 40px rgba(241, 96, 31, 0.08); transition: transform 0.4s ease, box-shadow 0.4s ease;">
+               <img src="images/rentav_mockup.png" alt="Rentav" style="width: 100%; height: auto; border-radius: 12px; display: block; object-fit: cover;">
+            </div>
+          </div>
         </div>
+
+        <style>
+          .mockup-frame:hover {
+            transform: translateY(-6px) scale(1.02);
+            box-shadow: 0 35px 70px rgba(0,0,0,0.6), 0 0 60px rgba(241, 96, 31, 0.2) !important;
+          }
+          @media (max-width: 900px) {
+            .svc-lead-grid { grid-template-columns: 1fr !important; gap: 30px !important; text-align: center !important; }
+            .svc-lead-text { text-align: center !important; }
+            .mockup-showcase { max-width: 600px; margin: 0 auto; }
+          }
+        </style>
       </div>
     </section>
 
@@ -205,11 +224,6 @@
       </div>
     </section>
 
-    <!-- REACT THREE FIBER (R3F) CINEMATIC 3D SHOWCASE -->
-    <div class="r3f-scroll-container" style="height: 500vh; position: relative; z-index: 10; background: #050505;">
-      <div id="r3f-root" style="position: sticky; top: 0; width: 100vw; height: 100vh; overflow: hidden;"></div>
-    </div>
-    <!-- /R3F SHOWCASE -->
 
     <section class="section">
       <div class="wrap">
