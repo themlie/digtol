@@ -54,7 +54,7 @@
 
 <main id="top">
 
-  <section class="svc-hero">
+  <section class="svc-hero svc-hero-video">
     <div class="wrap">
       <div class="breadcrumb">
         <a href="index.html">Anasayfa</a><span class="sep">&rsaquo;</span>
@@ -72,7 +72,13 @@
 
   <section class="section">
     <div class="wrap">
-      <div class="svc-lead">
+      <div class="bold-statement reveal-st">
+        <p>Ham görüntüler, profesyonel bir kurguyla</p>
+        <p class="statement-acc">büyüleyici bir hikayeye</p>
+        <p>dönüşür.</p>
+      </div>
+      
+      <div class="svc-lead" style="margin-top: 80px;">
         <div class="eyebrow reveal">PRODÜKSIYON</div>
         <h2 class="reveal">Video Prodüksiyon Nedir?</h2>
         <p>Video, bugün en hızlı büyüyen ve en çok etkileşim alan içerik türüdür. İyi kurgulanmış bir video, markanızın hikayesini saniyeler içinde anlatır ve akılda kalır.</p>
@@ -116,6 +122,68 @@
           <div class="fi"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3.5h8l4 4V20a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1V4.5a1 1 0 0 1 1-1Z"/><path d="M14 3.5V8h4M8 12.5h8M8 16h8"/></svg></div>
           <h4>Senaryo</h4>
           <p>Fikirden storyboard'a kurgu.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section planner-section" id="planla">
+    <div class="wrap">
+      <div class="eyebrow reveal">PROJENİZİ TASARLAYIN</div>
+      <h2 class="sec-title reveal">Projenizi birlikte planlayalım</h2>
+      <p class="sec-sub reveal">Birkaç seçimle ihtiyacınızı netleştirin; size özel, şeffaf bir teklif hazırlayalım.</p>
+      
+      <div class="planner-grid">
+        <div class="planner-form reveal">
+          <div class="planner-step">
+            <div class="planner-step-header">
+              <div class="planner-step-num">1</div>
+              <div class="planner-step-title">Ne tür bir video?</div>
+            </div>
+            <div class="planner-options" id="opt-type">
+              <div class="planner-btn active" data-val="Kurumsal tanıtım filmi">Kurumsal tanıtım filmi</div>
+              <div class="planner-btn" data-val="Reklam filmi">Reklam filmi</div>
+              <div class="planner-btn" data-val="Ürün videosu">Ürün videosu</div>
+              <div class="planner-btn" data-val="Sosyal medya içeriği">Sosyal medya içeriği</div>
+            </div>
+          </div>
+
+          <div class="planner-step">
+            <div class="planner-step-header">
+              <div class="planner-step-num">2</div>
+              <div class="planner-step-title">Yaklaşık süre?</div>
+            </div>
+            <div class="planner-options" id="opt-duration">
+              <div class="planner-btn active" data-val="1 dk altı">1 dk altı</div>
+              <div class="planner-btn" data-val="1-3 dakikalık">1-3 dakikalık</div>
+              <div class="planner-btn" data-val="3 dakikadan uzun">3 dakikadan uzun</div>
+            </div>
+          </div>
+
+          <div class="planner-step">
+            <div class="planner-step-header">
+              <div class="planner-step-num">3</div>
+              <div class="planner-step-title">Çekim kapsamı?</div>
+            </div>
+            <div class="planner-options" id="opt-scope">
+              <div class="planner-btn active" data-val="Tek gün">Tek gün</div>
+              <div class="planner-btn" data-val="2-3 günlük">2-3 günlük</div>
+              <div class="planner-btn" data-val="4+ gün">4+ gün</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="planner-summary reveal">
+          <div class="planner-summary-card">
+            <div class="planner-eyebrow">PROJENİZ</div>
+            <div class="planner-result-title" id="res-title">Kurumsal tanıtım filmi</div>
+            <div class="planner-result-desc">
+              <span id="res-dur">1 dk altı</span> &middot; <span id="res-scope">Tek gün</span> &mdash; ihtiyacınıza özel, şeffaf bir teklif hazırlayalım.
+            </div>
+            <div class="planner-action">
+              <a href="https://wa.me/905359360667?text=Merhaba,%20Kurumsal%20tanıtım%20filmi%20(1%20dk%20altı,%20Tek%20gün)%20için%20fiyat%20almak%20istiyorum." id="res-btn" class="btn btn-primary" target="_blank" rel="noopener">Kurumsal tanıtım filmi için teklif al</a>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -271,5 +339,48 @@
 </button>
 
 <script src="js/main.js"></script>
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const typeOpts = document.querySelectorAll('#opt-type .planner-btn');
+    const durOpts = document.querySelectorAll('#opt-duration .planner-btn');
+    const scopeOpts = document.querySelectorAll('#opt-scope .planner-btn');
+    
+    const resTitle = document.getElementById('res-title');
+    const resDur = document.getElementById('res-dur');
+    const resScope = document.getElementById('res-scope');
+    const resBtn = document.getElementById('res-btn');
+    
+    let state = {
+      type: 'Kurumsal tanıtım filmi',
+      dur: '1 dk altı',
+      scope: 'Tek gün'
+    };
+
+    function updateSummary() {
+      resTitle.textContent = state.type;
+      resDur.textContent = state.dur;
+      resScope.textContent = state.scope;
+      resBtn.textContent = state.type + ' için teklif al';
+      
+      const msg = `Merhaba, ${state.type} (${state.dur}, ${state.scope}) için fiyat almak istiyorum.`;
+      resBtn.href = `https://wa.me/905359360667?text=${encodeURIComponent(msg)}`;
+    }
+
+    function setupGroup(opts, key) {
+      opts.forEach(opt => {
+        opt.addEventListener('click', () => {
+          opts.forEach(o => o.classList.remove('active'));
+          opt.classList.add('active');
+          state[key] = opt.getAttribute('data-val');
+          updateSummary();
+        });
+      });
+    }
+
+    setupGroup(typeOpts, 'type');
+    setupGroup(durOpts, 'dur');
+    setupGroup(scopeOpts, 'scope');
+  });
+</script>
 </body>
 </html>

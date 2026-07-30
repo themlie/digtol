@@ -1782,8 +1782,14 @@ footer {
 
 .svc-hero.svc-hero-web {
   background: 
-    linear-gradient(to bottom, rgba(12, 7, 5, 0.5), rgba(12, 7, 5, 0.9)),
-    url('../images/hero/web_tasarim_hero.png') center/cover no-repeat;
+    linear-gradient(to bottom, rgba(12, 7, 5, 0.3), rgba(12, 7, 5, 0.7)),
+    url('../images/hero/web_tasarim_hero.png') right center / cover no-repeat;
+}
+
+.svc-hero.svc-hero-video {
+  background: 
+    linear-gradient(to bottom, rgba(12, 7, 5, 0.4), rgba(12, 7, 5, 0.9)),
+    url('../images/video_cekim_hero.png') center 80% / cover no-repeat;
 }
 
 .svc-hero::before {
@@ -3618,4 +3624,191 @@ footer {
   text-align: center;
   margin-top: 10px;
   min-height: 20px;
+}
+
+/* ==========================================================================
+   Project Planner (Video)
+   ========================================================================== */
+.planner-section {
+  padding: 80px 0;
+  border-top: 1px solid var(--line);
+}
+
+.planner-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  margin-top: 40px;
+}
+
+@media (min-width: 992px) {
+  .planner-grid {
+    grid-template-columns: 1.5fr 1fr;
+    gap: 60px;
+    align-items: start;
+  }
+}
+
+.planner-step {
+  margin-bottom: 35px;
+}
+
+.planner-step:last-child {
+  margin-bottom: 0;
+}
+
+.planner-step-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 15px;
+}
+
+.planner-step-num {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--line);
+  color: var(--ink);
+  font-size: 12px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.planner-step-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.planner-options {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.planner-btn {
+  background: var(--card);
+  border: 1px solid var(--line);
+  padding: 12px 20px;
+  border-radius: 8px;
+  color: var(--muted);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+.planner-btn:hover {
+  background: #f9f9f9;
+  color: var(--ink);
+}
+
+.planner-btn.active {
+  background: rgba(241, 96, 31, 0.05);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 0 15px rgba(241, 96, 31, 0.1);
+}
+
+.planner-summary-card {
+  background: var(--card);
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: 35px;
+  position: sticky;
+  top: 120px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+}
+
+.planner-summary-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; height: 3px;
+  background: linear-gradient(90deg, var(--accent), #ff8a50);
+  border-radius: 16px 16px 0 0;
+}
+
+.planner-eyebrow {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: var(--muted);
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+
+.planner-result-title {
+  font-family: 'Poppins', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.planner-result-desc {
+  font-size: 14px;
+  color: var(--muted);
+  line-height: 1.6;
+  margin-bottom: 30px;
+}
+
+.planner-action .btn {
+  width: 100%;
+  justify-content: center;
+  padding: 16px;
+  font-size: 15px;
+}
+
+/* ==========================================================================
+   Typographic Manifesto (Bold Statement)
+   ========================================================================== */
+.bold-statement {
+  padding: 120px 24px;
+  text-align: center;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 700;
+  line-height: 1.1;
+  font-size: clamp(40px, 6vw, 80px);
+  color: var(--ink);
+  overflow: hidden;
+}
+
+.bold-statement p {
+  margin: 0;
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.bold-statement.in p {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.bold-statement p:nth-child(1) {
+  transition-delay: 0.1s;
+}
+
+.bold-statement p:nth-child(2) {
+  transition-delay: 0.3s;
+}
+
+.bold-statement p:nth-child(3) {
+  transition-delay: 0.5s;
+}
+
+.statement-acc {
+  color: var(--accent);
+  display: inline-block;
+  transform-origin: center center;
+}
+
+.bold-statement.in p.statement-acc {
+  transform: scale(calc(0.7 + (var(--scroll-p, 0) * 0.5)));
+  transition: transform 0.1s ease-out;
 }

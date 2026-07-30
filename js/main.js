@@ -13,6 +13,14 @@ const onScroll = () => {
     orbitWrap.style.transform = 'scale(' + (1 + p * 1.6) + ')';
     orbitWrap.style.opacity = String(1 - Math.min(p * 1.4, 1));
   }
+  
+  // Bold statement scroll effect
+  const statement = document.querySelector('.statement-acc');
+  if (statement) {
+    const rect = statement.getBoundingClientRect();
+    const p = Math.max(0, Math.min(1, (window.innerHeight - rect.top) / (window.innerHeight + rect.height)));
+    statement.style.setProperty('--scroll-p', p);
+  }
 };
 onScroll();
 window.addEventListener('scroll', onScroll, { passive: true });
@@ -490,3 +498,39 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 });
+
+// ===== BOLD STATEMENT (TYPOGRAPHIC MANIFESTO) ANIMATION =====
+(function() {
+  const statements = document.querySelectorAll('.reveal-st');
+  
+  if (statements.length > 0) {
+    const statementObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          statementObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.3 });
+
+    statements.forEach(el => {
+      statementObserver.observe(el);
+    });
+
+    const updateStatements = () => {
+      statements.forEach(st => {
+        const rect = st.getBoundingClientRect();
+        const windowH = window.innerHeight;
+        
+        let p = 1 - ((rect.top + rect.height / 2) / windowH);
+        if (p < 0) p = 0;
+        if (p > 1) p = 1;
+        
+        st.style.setProperty('--scroll-p', p);
+      });
+    };
+    
+    window.addEventListener('scroll', updateStatements, { passive: true });
+    updateStatements();
+  }
+})();
