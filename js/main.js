@@ -534,3 +534,44 @@ document.addEventListener("DOMContentLoaded", () => {
     updateStatements();
   }
 })();
+
+// --- SOCIAL MEDIA REACH ANIMATION ---
+document.addEventListener('DOMContentLoaded', () => {
+  const reachCounter = document.getElementById('reachCounter');
+  if (!reachCounter) return;
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        animateReachCounter();
+        observer.disconnect();
+      }
+    });
+  }, { threshold: 0.5 });
+
+  observer.observe(reachCounter);
+
+  function animateReachCounter() {
+    let startVal = 120.00;
+    const endVal = 233.13;
+    const duration = 2500; 
+    const startTime = performance.now();
+
+    function updateCounter(currentTime) {
+      const elapsed = currentTime - startTime;
+      const progress = Math.min(elapsed / duration, 1);
+      
+      // easeOutExpo
+      const easeOut = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
+      const currentVal = startVal + (endVal - startVal) * easeOut;
+      
+      reachCounter.textContent = '%' + currentVal.toFixed(2);
+
+      if (progress < 1) {
+        requestAnimationFrame(updateCounter);
+      }
+    }
+
+    requestAnimationFrame(updateCounter);
+  }
+});
