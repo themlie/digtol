@@ -25,6 +25,45 @@ const onScroll = () => {
 onScroll();
 window.addEventListener('scroll', onScroll, { passive: true });
 
+// "Neden Digitolmedia" sinematik tipografik scroll efekti: başlık küçülüp yukarı kayar,
+// alt başlık solar, başlığın boşalttığı yere ikinci bir mesaj belirir
+const whyHero = document.querySelector('.why-hero');
+const whyTitle = document.getElementById('whyTitle');
+const whyEyebrow = document.getElementById('whyEyebrow');
+const whyReveal = document.getElementById('whyReveal');
+const whyReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+if (whyHero && whyTitle && whyEyebrow && whyReveal && !whyReducedMotion) {
+  const easeOutCubic = (t) => 1 - Math.pow(1 - t, 3);
+  let whyRaf = null;
+  const updateWhyHero = () => {
+    const rect = whyHero.getBoundingClientRect();
+    const vh = window.innerHeight;
+    const extra = rect.height - vh;
+    if (extra <= 0) return;
+    const scrolled = Math.min(Math.max(-rect.top, 0), extra);
+    const raw = Math.min(scrolled / extra, 1);
+
+    // 1. evre (raw 0 -> 0.45): başlık küçülüp yukarı çekilirken tamamen solar, ikinci metinle asla çakışmaz
+    const titleRaw = Math.min(raw / 0.45, 1);
+    const titleEased = easeOutCubic(titleRaw);
+    whyTitle.style.transform = `scale(${1 - titleEased * 0.4}) translateY(${-titleEased * vh * 0.32}px)`;
+    whyTitle.style.opacity = String(1 - Math.min(titleRaw * 1.4, 1));
+    whyEyebrow.style.opacity = String(1 - Math.min(titleRaw * 2.2, 1));
+
+    // başlık tamamen kaybolduktan sonra (raw ~0.6-0.95) ikinci metin boşalan merkeze belirir
+    const revealRaw = Math.min(Math.max((raw - 0.6) / 0.35, 0), 1);
+    const revealEased = easeOutCubic(revealRaw);
+    whyReveal.style.opacity = String(revealEased);
+    whyReveal.style.transform = `translateY(${(1 - revealEased) * 24}px)`;
+  };
+  updateWhyHero();
+  window.addEventListener('scroll', () => {
+    if (whyRaf) return;
+    whyRaf = requestAnimationFrame(() => { updateWhyHero(); whyRaf = null; });
+  }, { passive: true });
+  window.addEventListener('resize', updateWhyHero);
+}
+
 // hero interaktif ışık + dokunma parlaması
 const hero = document.querySelector('.hero');
 const heroLight = document.getElementById('heroLight');
@@ -130,6 +169,33 @@ if ('IntersectionObserver' in window) {
 } else {
   // IntersectionObserver yoksa tüm içeriği göster
   revealEls.forEach(el => el.classList.add('visible'));
+}
+
+// hizmet & paket kartları: imleç takipli spotlight + 3D tilt (dokunmatik/reduced-motion'da devre dışı)
+const tiltCards = document.querySelectorAll('.svc, .pkg');
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
+if (tiltCards.length && !prefersReducedMotion && !isCoarsePointer) {
+  tiltCards.forEach(card => {
+    let raf = null;
+    card.addEventListener('mousemove', (e) => {
+      const rect = card.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width;
+      const py = (e.clientY - rect.top) / rect.height;
+      if (raf) cancelAnimationFrame(raf);
+      raf = requestAnimationFrame(() => {
+        card.style.setProperty('--mx', `${px * 100}%`);
+        card.style.setProperty('--my', `${py * 100}%`);
+        const rotateY = (px - 0.5) * 10;
+        const rotateX = (0.5 - py) * 10;
+        card.style.transform = `perspective(700px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px) scale(1.015)`;
+      });
+    });
+    card.addEventListener('mouseleave', () => {
+      if (raf) cancelAnimationFrame(raf);
+      card.style.transform = '';
+    });
+  });
 }
 
 // portfolio filter

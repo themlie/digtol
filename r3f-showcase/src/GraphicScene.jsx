@@ -122,7 +122,7 @@ function Phone() {
   })
 
   return (
-    <group ref={group} position={[-0.075, 0.55, 0]} rotation={[base.y, base.x, 0.015]}>
+    <group ref={group} position={[-0.3, 1.2, 0]} rotation={[base.y, base.x, 0.015]}>
       <Html transform center occlude={false} position={[0, 0, 0]} distanceFactor={1.3} style={{ pointerEvents: 'none' }}>
         <CSSPhone />
       </Html>
@@ -210,12 +210,12 @@ function NotificationBadge(props) {
     <FloatingGroup {...rest}>
       <SoftShadow width={width} height={height} />
       <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.9} style={{ pointerEvents: 'none' }}>
-        <div style={{ position: 'relative', width: 54, height: 54, display: 'flex', alignItems: 'center', justifyContent: 'center', filter: 'drop-shadow(0 5px 8px rgba(17,19,24,0.16))' }}>
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={INK} strokeWidth="2">
+        <div style={{ position: 'relative', width: 120, height: 120, display: 'flex', alignItems: 'center', justifyContent: 'center', filter: 'drop-shadow(0 6px 12px rgba(17,19,24,0.16))' }}>
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke={INK} strokeWidth="2">
             <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
             <path d="M13.73 21a2 2 0 0 1-3.46 0" />
           </svg>
-          <div style={{ position: 'absolute', top: 4, right: 6, width: 11, height: 11, borderRadius: '50%', background: ACCENT, border: '2px solid #fff' }} />
+          <div style={{ position: 'absolute', top: 10, right: 14, width: 24, height: 24, borderRadius: '50%', background: ACCENT, border: '4px solid #fff' }} />
         </div>
       </Html>
     </FloatingGroup>
@@ -224,7 +224,7 @@ function NotificationBadge(props) {
 
 const heartSvg = (
   <svg width="120" height="120" viewBox="0 0 24 24" fill={ACCENT}>
-    <path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 2.5 5 6 5c2 0 3.5 1.2 4 2.3.5-1.1 2-2.3 4-2.3 3.5 0 5.5 3.5 3.5 7.5C19 16.65 12 21 12 21z" />
+    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
   </svg>
 )
 const commentSvg = (
@@ -259,30 +259,103 @@ function Studio() {
   )
 }
 
-export default function Scene() {
+export default function GraphicScene({ domTarget }) {
+  const group = useRef()
+  useFrame(() => {
+    if (domTarget && group.current) {
+      const rect = domTarget.getBoundingClientRect()
+      const vh = window.innerHeight
+      let targetScale = 1;
+      let targetZ = 0;
+      
+      if (rect.top > 0) {
+        // Entering from bottom
+        const enterP = Math.max(0, Math.min(1, rect.top / vh))
+        targetScale = 1 - enterP * 0.4
+        targetZ = enterP * -10
+      } else {
+        // Leaving from top
+        const leaveP = Math.max(0, Math.min(1, -rect.top / (rect.height * 0.7)))
+        targetScale = 1 - leaveP * 0.4
+        targetZ = leaveP * -10
+      }
+      
+      group.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.08)
+      group.current.position.z += (targetZ - group.current.position.z) * 0.08
+    }
+  })
+
   return (
-    <Canvas dpr={[1, 1.75]} camera={{ fov: 32, position: [0, 0, 12] }} gl={{ antialias: true, alpha: false }}>
-      <color attach="background" args={['#ffffff']} />
+    <group ref={group}>
       <ambientLight intensity={0.65} />
       <directionalLight position={[3, 5, 4]} intensity={1.0} color="#fff8f0" />
       <pointLight position={[0, 0, -3]} intensity={0.45} color={ACCENT} distance={9} decay={2} />
 
       <Studio />
 
-      <Phone />
+      {/* iPad Pro */}
+      <FloatingGroup position={[0, 0.4, 0]} rotation={[0.08, -0.15, 0.02]} speed={0.4} phase={0} amplitude={0.15}>
+        <mesh position={[0, 0, -0.05]}>
+          <RoundedBox args={[3.2, 4.4, 0.1]} radius={0.15} smoothness={4}>
+            <meshStandardMaterial color="#b0b0b0" metalness={0.7} roughness={0.3} />
+          </RoundedBox>
+        </mesh>
+        <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.5} style={{ pointerEvents: 'none' }}>
+          <div style={{ width: 440, height: 610, background: '#111', borderRadius: 16, overflow: 'hidden', padding: 12, display: 'flex', flexDirection: 'column' }}>
+            <div style={{ flex: 1, background: '#fff', borderRadius: 12, backgroundImage: 'url(images/work/profil.jpg)', backgroundSize: 'cover', backgroundPosition: 'center' }} />
+          </div>
+        </Html>
+        <SoftShadow width={4.0} height={5.2} />
+      </FloatingGroup>
+      
+      {/* Apple Pencil */}
+      <FloatingGroup position={[2.0, 0.2, 0.4]} rotation={[0.4, 0.2, 0.1]} speed={0.6} phase={1} amplitude={0.2}>
+         <mesh>
+           <cylinderGeometry args={[0.04, 0.04, 2.5, 32]} />
+           <meshStandardMaterial color="#ffffff" metalness={0.1} roughness={0.4} />
+         </mesh>
+         <mesh position={[0, -1.35, 0]}>
+           <cylinderGeometry args={[0.04, 0.01, 0.2, 32]} />
+           <meshStandardMaterial color="#e0e0e0" />
+         </mesh>
+      </FloatingGroup>
 
-      <FloatingLogo src="images/3d%20logo/insta.png" size={160} position={[-2.05, 1.2, 0.5]} width={1.4} height={1.4} speed={0.55} phase={0.2} amplitude={0.1} />
-      <FloatingLogo src="images/3d%20logo/faceboook.png" size={150} position={[2.1, 1.35, -0.35]} width={1.3} height={1.3} speed={0.5} phase={1.4} amplitude={0.1} />
-      <SvgIconCard position={[-2.15, -1.05, -0.25]} width={2.2} height={2.2} speed={0.62} phase={2.1} amplitude={0.09}>{linkedinSvg}</SvgIconCard>
-      <SvgIconCard position={[2.15, -1.15, 0.45]} width={3.4} height={3.4} speed={0.58} phase={0.8} amplitude={0.09}>{tiktokSvg}</SvgIconCard>
+      {/* Graphic Design Floating Objects */}
+      <SvgIconCard position={[-2.4, 1.8, 0.5]} width={1.8} height={1.8} speed={0.5} phase={0.5} amplitude={0.12}>
+        <svg width="100" height="100" viewBox="0 0 24 24" fill="none" stroke={ACCENT} strokeWidth="2">
+          <path d="M12 2L2 22h20L12 2z" />
+        </svg>
+      </SvgIconCard>
 
-      <SvgIconCard position={[0.55, 2.15, 0.75]} width={1.8} height={1.8} speed={0.75} phase={0.5} amplitude={0.12}>{heartSvg}</SvgIconCard>
-      <SvgIconCard position={[-1.15, -2.0, 0.65]} width={1.8} height={1.8} speed={0.7} phase={1.9} amplitude={0.12}>{commentSvg}</SvgIconCard>
+      <SvgIconCard position={[2.6, 2.0, -0.5]} width={2.0} height={2.0} speed={0.6} phase={1.2} amplitude={0.1}>
+        <svg width="120" height="120" viewBox="0 0 24 24" fill="none" stroke={INK} strokeWidth="1.5">
+          <rect x="3" y="3" width="18" height="18" rx="2" ry="2" />
+          <path d="M3 9h18M9 21V9" />
+        </svg>
+      </SvgIconCard>
 
-      <GrowthCard position={[2.6, 0.15, -0.85]} width={1.5} height={1.05} speed={0.4} phase={0.3} amplitude={0.08} />
-      <EngagementCard position={[-2.65, 0.3, -0.75]} width={1.35} height={0.85} speed={0.42} phase={1.6} amplitude={0.08} />
-      <CalendarCard position={[0.1, -2.25, -0.55]} width={1.25} height={1.1} speed={0.38} phase={2.4} amplitude={0.08} />
-      <NotificationBadge position={[1.85, 2.45, 1.15]} width={0.55} height={0.55} speed={0.9} phase={3.0} amplitude={0.1} />
-    </Canvas>
+      <FloatingGroup position={[-2.2, -1.2, 0.3]} speed={0.5} phase={2.2} amplitude={0.1}>
+        <SoftShadow width={1.5} height={1.5} />
+        <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.9} style={{ pointerEvents: 'none' }}>
+           <div style={{ ...softCardStyle, width: 140, height: 180, display: 'flex', flexDirection: 'column' }}>
+             <div style={{ background: ACCENT, flex: 2, borderTopLeftRadius: 18, borderTopRightRadius: 18 }} />
+             <div style={{ flex: 1, padding: '12px 16px', display: 'flex', flexDirection: 'column', gap: 4 }}>
+               <div style={{ width: '80%', height: 6, background: '#e0e0e0', borderRadius: 4 }} />
+               <div style={{ width: '50%', height: 6, background: '#f0f0f0', borderRadius: 4 }} />
+             </div>
+           </div>
+        </Html>
+      </FloatingGroup>
+      
+      <FloatingGroup position={[2.2, -1.4, 0.8]} speed={0.7} phase={0.8} amplitude={0.1}>
+        <SoftShadow width={1.6} height={1.6} />
+        <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.9} style={{ pointerEvents: 'none' }}>
+           <div style={{ ...softCardStyle, width: 150, height: 150, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+             <div style={{ fontSize: 64, fontWeight: 800, color: INK, letterSpacing: -2 }}>Aa</div>
+           </div>
+        </Html>
+      </FloatingGroup>
+      
+    </group>
   )
 }

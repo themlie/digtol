@@ -61,7 +61,7 @@ function FloatingGroup({ position, rotation = [0, 0, 0], speed = 1, phase = 0, a
 function FloatingLogo({ position, rotation = [0, 0, 0], width, height, speed = 1, phase = 0, amplitude = 0.11, src, size = 60 }) {
   return (
     <FloatingGroup position={position} rotation={rotation} speed={speed} phase={phase} amplitude={amplitude}>
-      <SoftShadow width={width} height={height} />
+
       <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.9} style={{ pointerEvents: 'none' }}>
         <img src={src} style={{ width: size, height: size, objectFit: 'contain', display: 'block', filter: 'drop-shadow(0 6px 10px rgba(17,19,24,0.18))' }} />
       </Html>
@@ -122,11 +122,11 @@ function Phone() {
   })
 
   return (
-    <group ref={group} position={[-0.075, 0.55, 0]} rotation={[base.y, base.x, 0.015]}>
+    <group ref={group} position={[-0.3, 1.2, 0]} rotation={[base.y, base.x, 0.015]}>
       <Html transform center occlude={false} position={[0, 0, 0]} distanceFactor={1.3} style={{ pointerEvents: 'none' }}>
         <CSSPhone />
       </Html>
-      <SoftShadow width={1.4} height={2.6} />
+
     </group>
   )
 }
@@ -136,7 +136,7 @@ function SvgIconCard(props) {
   const { children, width, height, ...rest } = props
   return (
     <FloatingGroup {...rest}>
-      <SoftShadow width={width} height={height} />
+
       <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.9} style={{ pointerEvents: 'none' }}>
         <div style={{ filter: 'drop-shadow(0 5px 8px rgba(17,19,24,0.16))', display: 'flex' }}>{children}</div>
       </Html>
@@ -155,7 +155,7 @@ function GrowthCard(props) {
   const { width, height, ...rest } = props
   return (
     <FloatingGroup {...rest}>
-      <SoftShadow width={width} height={height} />
+
       <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.9} style={{ pointerEvents: 'none' }}>
         <div style={{ ...softCardStyle, width: 195, padding: '18px 20px' }}>
           <div style={{ fontSize: 13, color: MUTED, marginBottom: 5 }}>Takipçi Artışı</div>
@@ -173,7 +173,7 @@ function EngagementCard(props) {
   const { width, height, ...rest } = props
   return (
     <FloatingGroup {...rest}>
-      <SoftShadow width={width} height={height} />
+
       <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.9} style={{ pointerEvents: 'none' }}>
         <div style={{ ...softCardStyle, width: 198, padding: '18px 20px', display: 'flex', gap: 24 }}>
           <Stat n="%8.2" l="Etkileşim" />
@@ -189,7 +189,7 @@ function CalendarCard(props) {
   const highlighted = [2, 5, 9, 13, 17]
   return (
     <FloatingGroup {...rest}>
-      <SoftShadow width={width} height={height} />
+
       <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.9} style={{ pointerEvents: 'none' }}>
         <div style={{ ...softCardStyle, width: 172, padding: 20 }}>
           <div style={{ fontSize: 13, color: MUTED, marginBottom: 12 }}>İçerik Takvimi</div>
@@ -208,14 +208,14 @@ function NotificationBadge(props) {
   const { width, height, ...rest } = props
   return (
     <FloatingGroup {...rest}>
-      <SoftShadow width={width} height={height} />
+
       <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.9} style={{ pointerEvents: 'none' }}>
-        <div style={{ position: 'relative', width: 54, height: 54, display: 'flex', alignItems: 'center', justifyContent: 'center', filter: 'drop-shadow(0 5px 8px rgba(17,19,24,0.16))' }}>
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={INK} strokeWidth="2">
+        <div style={{ position: 'relative', width: 120, height: 120, display: 'flex', alignItems: 'center', justifyContent: 'center', filter: 'drop-shadow(0 6px 12px rgba(17,19,24,0.16))' }}>
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke={INK} strokeWidth="2">
             <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
             <path d="M13.73 21a2 2 0 0 1-3.46 0" />
           </svg>
-          <div style={{ position: 'absolute', top: 4, right: 6, width: 11, height: 11, borderRadius: '50%', background: ACCENT, border: '2px solid #fff' }} />
+          <div style={{ position: 'absolute', top: 10, right: 14, width: 24, height: 24, borderRadius: '50%', background: ACCENT, border: '4px solid #fff' }} />
         </div>
       </Html>
     </FloatingGroup>
@@ -224,7 +224,7 @@ function NotificationBadge(props) {
 
 const heartSvg = (
   <svg width="120" height="120" viewBox="0 0 24 24" fill={ACCENT}>
-    <path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 2.5 5 6 5c2 0 3.5 1.2 4 2.3.5-1.1 2-2.3 4-2.3 3.5 0 5.5 3.5 3.5 7.5C19 16.65 12 21 12 21z" />
+    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
   </svg>
 )
 const commentSvg = (
@@ -259,10 +259,24 @@ function Studio() {
   )
 }
 
-export default function Scene() {
+export default function SocialScene({ domTarget }) {
+  const group = useRef()
+  useFrame(() => {
+    if (domTarget && group.current) {
+      const rect = domTarget.getBoundingClientRect()
+      const vh = window.innerHeight
+      // Fade out as it scrolls UP (leaves top)
+      const leaveP = Math.max(0, Math.min(1, -rect.top / (rect.height * 0.7)))
+      const targetScale = 1 - leaveP * 0.4
+      const targetZ = leaveP * -8
+      group.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.08)
+      group.current.position.z += (targetZ - group.current.position.z) * 0.08
+      // opacity can't easily be lerped on a group without material traversal, but scaling/receding is enough!
+    }
+  })
+
   return (
-    <Canvas dpr={[1, 1.75]} camera={{ fov: 32, position: [0, 0, 12] }} gl={{ antialias: true, alpha: false }}>
-      <color attach="background" args={['#ffffff']} />
+    <group ref={group}>
       <ambientLight intensity={0.65} />
       <directionalLight position={[3, 5, 4]} intensity={1.0} color="#fff8f0" />
       <pointLight position={[0, 0, -3]} intensity={0.45} color={ACCENT} distance={9} decay={2} />
@@ -276,13 +290,13 @@ export default function Scene() {
       <SvgIconCard position={[-2.15, -1.05, -0.25]} width={2.2} height={2.2} speed={0.62} phase={2.1} amplitude={0.09}>{linkedinSvg}</SvgIconCard>
       <SvgIconCard position={[2.15, -1.15, 0.45]} width={3.4} height={3.4} speed={0.58} phase={0.8} amplitude={0.09}>{tiktokSvg}</SvgIconCard>
 
-      <SvgIconCard position={[0.55, 2.15, 0.75]} width={1.8} height={1.8} speed={0.75} phase={0.5} amplitude={0.12}>{heartSvg}</SvgIconCard>
+      <SvgIconCard position={[-1.5, 2.45, 0.75]} width={1.8} height={1.8} speed={0.75} phase={0.5} amplitude={0.12}>{heartSvg}</SvgIconCard>
       <SvgIconCard position={[-1.15, -2.0, 0.65]} width={1.8} height={1.8} speed={0.7} phase={1.9} amplitude={0.12}>{commentSvg}</SvgIconCard>
 
       <GrowthCard position={[2.6, 0.15, -0.85]} width={1.5} height={1.05} speed={0.4} phase={0.3} amplitude={0.08} />
       <EngagementCard position={[-2.65, 0.3, -0.75]} width={1.35} height={0.85} speed={0.42} phase={1.6} amplitude={0.08} />
-      <CalendarCard position={[0.1, -2.25, -0.55]} width={1.25} height={1.1} speed={0.38} phase={2.4} amplitude={0.08} />
-      <NotificationBadge position={[1.85, 2.45, 1.15]} width={0.55} height={0.55} speed={0.9} phase={3.0} amplitude={0.1} />
-    </Canvas>
+      <CalendarCard position={[0.75, -2.0, -0.55]} scale={1.3} width={1.25} height={1.1} speed={0.38} phase={2.4} amplitude={0.08} />
+      <NotificationBadge position={[1.65, 2.45, 1.15]} width={1.2} height={1.2} speed={0.9} phase={3.0} amplitude={0.1} />
+    </group>
   )
 }

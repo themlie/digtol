@@ -61,7 +61,8 @@ function FloatingGroup({ position, rotation = [0, 0, 0], speed = 1, phase = 0, a
 function FloatingLogo({ position, rotation = [0, 0, 0], width, height, speed = 1, phase = 0, amplitude = 0.11, src, size = 60 }) {
   return (
     <FloatingGroup position={position} rotation={rotation} speed={speed} phase={phase} amplitude={amplitude}>
-      <SoftShadow width={width} height={height} />
+        
+      
       <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.9} style={{ pointerEvents: 'none' }}>
         <img src={src} style={{ width: size, height: size, objectFit: 'contain', display: 'block', filter: 'drop-shadow(0 6px 10px rgba(17,19,24,0.18))' }} />
       </Html>
@@ -122,11 +123,11 @@ function Phone() {
   })
 
   return (
-    <group ref={group} position={[-0.075, 0.55, 0]} rotation={[base.y, base.x, 0.015]}>
+    <group ref={group} position={[-0.3, 1.2, 0]} rotation={[base.y, base.x, 0.015]}>
       <Html transform center occlude={false} position={[0, 0, 0]} distanceFactor={1.3} style={{ pointerEvents: 'none' }}>
         <CSSPhone />
       </Html>
-      <SoftShadow width={1.4} height={2.6} />
+      
     </group>
   )
 }
@@ -136,7 +137,8 @@ function SvgIconCard(props) {
   const { children, width, height, ...rest } = props
   return (
     <FloatingGroup {...rest}>
-      <SoftShadow width={width} height={height} />
+        
+      
       <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.9} style={{ pointerEvents: 'none' }}>
         <div style={{ filter: 'drop-shadow(0 5px 8px rgba(17,19,24,0.16))', display: 'flex' }}>{children}</div>
       </Html>
@@ -155,7 +157,8 @@ function GrowthCard(props) {
   const { width, height, ...rest } = props
   return (
     <FloatingGroup {...rest}>
-      <SoftShadow width={width} height={height} />
+        
+      
       <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.9} style={{ pointerEvents: 'none' }}>
         <div style={{ ...softCardStyle, width: 195, padding: '18px 20px' }}>
           <div style={{ fontSize: 13, color: MUTED, marginBottom: 5 }}>Takipçi Artışı</div>
@@ -173,7 +176,8 @@ function EngagementCard(props) {
   const { width, height, ...rest } = props
   return (
     <FloatingGroup {...rest}>
-      <SoftShadow width={width} height={height} />
+        
+      
       <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.9} style={{ pointerEvents: 'none' }}>
         <div style={{ ...softCardStyle, width: 198, padding: '18px 20px', display: 'flex', gap: 24 }}>
           <Stat n="%8.2" l="Etkileşim" />
@@ -189,7 +193,8 @@ function CalendarCard(props) {
   const highlighted = [2, 5, 9, 13, 17]
   return (
     <FloatingGroup {...rest}>
-      <SoftShadow width={width} height={height} />
+        
+      
       <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.9} style={{ pointerEvents: 'none' }}>
         <div style={{ ...softCardStyle, width: 172, padding: 20 }}>
           <div style={{ fontSize: 13, color: MUTED, marginBottom: 12 }}>İçerik Takvimi</div>
@@ -208,14 +213,15 @@ function NotificationBadge(props) {
   const { width, height, ...rest } = props
   return (
     <FloatingGroup {...rest}>
-      <SoftShadow width={width} height={height} />
+        
+      
       <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.9} style={{ pointerEvents: 'none' }}>
-        <div style={{ position: 'relative', width: 54, height: 54, display: 'flex', alignItems: 'center', justifyContent: 'center', filter: 'drop-shadow(0 5px 8px rgba(17,19,24,0.16))' }}>
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke={INK} strokeWidth="2">
+        <div style={{ position: 'relative', width: 120, height: 120, display: 'flex', alignItems: 'center', justifyContent: 'center', filter: 'drop-shadow(0 6px 12px rgba(17,19,24,0.16))' }}>
+          <svg width="60" height="60" viewBox="0 0 24 24" fill="none" stroke={INK} strokeWidth="2">
             <path d="M18 8a6 6 0 0 0-12 0c0 7-3 9-3 9h18s-3-2-3-9" />
             <path d="M13.73 21a2 2 0 0 1-3.46 0" />
           </svg>
-          <div style={{ position: 'absolute', top: 4, right: 6, width: 11, height: 11, borderRadius: '50%', background: ACCENT, border: '2px solid #fff' }} />
+          <div style={{ position: 'absolute', top: 10, right: 14, width: 24, height: 24, borderRadius: '50%', background: ACCENT, border: '4px solid #fff' }} />
         </div>
       </Html>
     </FloatingGroup>
@@ -224,7 +230,7 @@ function NotificationBadge(props) {
 
 const heartSvg = (
   <svg width="120" height="120" viewBox="0 0 24 24" fill={ACCENT}>
-    <path d="M12 21s-7-4.35-9.5-8.5C.5 8.5 2.5 5 6 5c2 0 3.5 1.2 4 2.3.5-1.1 2-2.3 4-2.3 3.5 0 5.5 3.5 3.5 7.5C19 16.65 12 21 12 21z" />
+    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
   </svg>
 )
 const commentSvg = (
@@ -259,30 +265,198 @@ function Studio() {
   )
 }
 
-export default function Scene() {
+export default function VideoScene({ domTarget }) {
+  const group = useRef()
+  useFrame(() => {
+    if (domTarget && group.current) {
+      const rect = domTarget.getBoundingClientRect()
+      const vh = window.innerHeight
+      let targetScale = 1;
+      let targetZ = 0;
+      
+      if (rect.top > 0) {
+        // Entering from bottom
+        const enterP = Math.max(0, Math.min(1, rect.top / vh))
+        targetScale = 1 - enterP * 0.4
+        targetZ = enterP * -10
+      } else {
+        // Leaving from top
+        const leaveP = Math.max(0, Math.min(1, -rect.top / (rect.height * 0.7)))
+        targetScale = 1 - leaveP * 0.4
+        targetZ = leaveP * -10
+      }
+      
+      group.current.scale.lerp(new THREE.Vector3(targetScale, targetScale, targetScale), 0.08)
+      group.current.position.z += (targetZ - group.current.position.z) * 0.08
+    }
+  })
+
   return (
-    <Canvas dpr={[1, 1.75]} camera={{ fov: 32, position: [0, 0, 12] }} gl={{ antialias: true, alpha: false }}>
-      <color attach="background" args={['#ffffff']} />
+    <group ref={group}>
       <ambientLight intensity={0.65} />
       <directionalLight position={[3, 5, 4]} intensity={1.0} color="#fff8f0" />
       <pointLight position={[0, 0, -3]} intensity={0.45} color={ACCENT} distance={9} decay={2} />
 
       <Studio />
 
-      <Phone />
+      {/* Cinema Camera */}
+      <FloatingGroup position={[0, 0.4, 0]} rotation={[0.08, -0.3, 0.02]} speed={0.4} phase={0} amplitude={0.15}>
+        
+        {/* Camera Body */}
+        <mesh position={[0, 0, 0]}>
+          <RoundedBox args={[1.8, 1.6, 2.0]} radius={0.1} smoothness={4}>
+            <meshStandardMaterial color="#2d2d2d" metalness={0.5} roughness={0.6} />
+          </RoundedBox>
+        </mesh>
+        
+        {/* Recording Button (Red) */}
+        <mesh position={[0.7, 0.4, 0.9]} rotation={[0, 0, Math.PI / 2]}>
+          <cylinderGeometry args={[0.15, 0.15, 0.2, 16]} />
+          <meshStandardMaterial color="#ff2a2a" roughness={0.2} />
+        </mesh>
 
-      <FloatingLogo src="images/3d%20logo/insta.png" size={160} position={[-2.05, 1.2, 0.5]} width={1.4} height={1.4} speed={0.55} phase={0.2} amplitude={0.1} />
-      <FloatingLogo src="images/3d%20logo/faceboook.png" size={150} position={[2.1, 1.35, -0.35]} width={1.3} height={1.3} speed={0.5} phase={1.4} amplitude={0.1} />
-      <SvgIconCard position={[-2.15, -1.05, -0.25]} width={2.2} height={2.2} speed={0.62} phase={2.1} amplitude={0.09}>{linkedinSvg}</SvgIconCard>
-      <SvgIconCard position={[2.15, -1.15, 0.45]} width={3.4} height={3.4} speed={0.58} phase={0.8} amplitude={0.09}>{tiktokSvg}</SvgIconCard>
+        {/* Side Panel Detail (Screen/Vents) */}
+        <mesh position={[-0.92, 0, 0]}>
+          <boxGeometry args={[0.05, 1.0, 1.2]} />
+          <meshStandardMaterial color="#1a1a1a" roughness={0.8} />
+        </mesh>
+        
+        {/* Lens Mount (Silver/Metal) */}
+        <mesh position={[0, 0, 1.05]} rotation={[Math.PI / 2, 0, 0]}>
+          <cylinderGeometry args={[0.7, 0.7, 0.2, 32]} />
+          <meshStandardMaterial color="#a0a0a0" metalness={0.9} roughness={0.2} />
+        </mesh>
+        
+        {/* Lens Body */}
+        <mesh position={[0, 0, 1.6]} rotation={[Math.PI / 2, 0, 0]}>
+          <cylinderGeometry args={[0.6, 0.65, 1.0, 32]} />
+          <meshStandardMaterial color="#1c1c1c" metalness={0.4} roughness={0.6} />
+        </mesh>
 
-      <SvgIconCard position={[0.55, 2.15, 0.75]} width={1.8} height={1.8} speed={0.75} phase={0.5} amplitude={0.12}>{heartSvg}</SvgIconCard>
-      <SvgIconCard position={[-1.15, -2.0, 0.65]} width={1.8} height={1.8} speed={0.7} phase={1.9} amplitude={0.12}>{commentSvg}</SvgIconCard>
+        {/* Lens Orange Accent Ring */}
+        <mesh position={[0, 0, 1.85]} rotation={[Math.PI / 2, 0, 0]}>
+          <cylinderGeometry args={[0.61, 0.61, 0.05, 32]} />
+          <meshStandardMaterial color={ACCENT} roughness={0.3} />
+        </mesh>
+        
+        {/* Lens Glass Backing (Dark interior) */}
+        <mesh position={[0, 0, 2.05]} rotation={[Math.PI / 2, 0, 0]}>
+          <cylinderGeometry args={[0.48, 0.48, 0.05, 32]} />
+          <meshBasicMaterial color="#050505" />
+        </mesh>
 
-      <GrowthCard position={[2.6, 0.15, -0.85]} width={1.5} height={1.05} speed={0.4} phase={0.3} amplitude={0.08} />
-      <EngagementCard position={[-2.65, 0.3, -0.75]} width={1.35} height={0.85} speed={0.42} phase={1.6} amplitude={0.08} />
-      <CalendarCard position={[0.1, -2.25, -0.55]} width={1.25} height={1.1} speed={0.38} phase={2.4} amplitude={0.08} />
-      <NotificationBadge position={[1.85, 2.45, 1.15]} width={0.55} height={0.55} speed={0.9} phase={3.0} amplitude={0.1} />
-    </Canvas>
+        {/* Lens Glass (Highly reflective) */}
+        <mesh position={[0, 0, 2.08]} rotation={[Math.PI / 2, 0, 0]}>
+          <sphereGeometry args={[0.48, 32, 16, 0, Math.PI * 2, 0, Math.PI / 6]} />
+          <meshPhysicalMaterial 
+            color="#050505"
+            emissive="#1a2b4c"
+            emissiveIntensity={0.5}
+            metalness={1.0} 
+            roughness={0.05} 
+            clearcoat={1.0}
+            clearcoatRoughness={0.0}
+            envMapIntensity={5.0}
+          />
+        </mesh>
+        
+        {/* Specular Highlight Light (Forces a reflection on the glass) */}
+        <pointLight position={[0.5, 0.5, 2.5]} intensity={1.5} distance={2} color="#ffffff" />
+        
+        {/* Top Handle */}
+        <mesh position={[0, 1.1, 0.2]}>
+          <RoundedBox args={[0.3, 0.6, 1.8]} radius={0.05} smoothness={2}>
+            <meshStandardMaterial color="#3a3a3a" metalness={0.4} roughness={0.7} />
+          </RoundedBox>
+        </mesh>
+        <mesh position={[0, 0.8, -0.6]}>
+          <boxGeometry args={[0.3, 0.6, 0.3]} />
+          <meshStandardMaterial color="#3a3a3a" />
+        </mesh>
+        <mesh position={[0, 0.8, 1.0]}>
+          <boxGeometry args={[0.3, 0.6, 0.3]} />
+          <meshStandardMaterial color="#3a3a3a" />
+        </mesh>
+        
+        {/* V-Mount Battery */}
+        <mesh position={[0, -0.1, -1.1]}>
+          <RoundedBox args={[1.2, 1.4, 0.4]} radius={0.08} smoothness={2}>
+            <meshStandardMaterial color="#222" metalness={0.3} roughness={0.8} />
+          </RoundedBox>
+        </mesh>
+        {/* Battery LED Indicator */}
+        <mesh position={[0.4, 0.4, -1.31]}>
+          <boxGeometry args={[0.2, 0.05, 0.05]} />
+          <meshStandardMaterial color="#00ff00" emissive="#00ff00" emissiveIntensity={0.5} />
+        </mesh>
+
+        
+      </FloatingGroup>
+      
+      {/* Clapperboard */}
+      <FloatingGroup position={[-2.4, 1.8, 0.5]} rotation={[0, 0, -0.1]} speed={0.5} phase={0.5} amplitude={0.12}>
+        
+        
+        <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.9} style={{ pointerEvents: 'none' }}>
+           <div style={{ width: 140, height: 110, background: '#111', borderRadius: 8, border: '2px solid #333', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+             <div style={{ height: 24, background: 'repeating-linear-gradient(45deg, #111, #111 10px, #fff 10px, #fff 20px)' }} />
+             <div style={{ flex: 1, padding: 8, color: '#fff', fontSize: 10, display: 'flex', flexDirection: 'column', gap: 4 }}>
+               <div>SCENE <span style={{fontSize: 14, fontWeight: 'bold'}}>01</span></div>
+               <div>TAKE <span style={{fontSize: 14, fontWeight: 'bold'}}>04</span></div>
+             </div>
+           </div>
+        </Html>
+      </FloatingGroup>
+
+      {/* Timeline Card */}
+      <FloatingGroup position={[2.6, 1.8, -0.5]} speed={0.6} phase={1.2} amplitude={0.1}>
+        
+        
+        <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.9} style={{ pointerEvents: 'none' }}>
+           <div style={{ ...softCardStyle, width: 180, height: 80, padding: 12, display: 'flex', flexDirection: 'column', gap: 6 }}>
+             <div style={{ width: '100%', height: 14, background: '#e0e0e0', borderRadius: 4, display: 'flex', gap: 2 }}>
+                <div style={{ width: '30%', height: '100%', background: ACCENT, borderRadius: 2 }} />
+                <div style={{ width: '40%', height: '100%', background: '#bbb', borderRadius: 2 }} />
+             </div>
+             <div style={{ width: '80%', height: 10, background: '#f0f0f0', borderRadius: 4 }} />
+             <div style={{ width: '60%', height: 10, background: '#f0f0f0', borderRadius: 4 }} />
+           </div>
+        </Html>
+      </FloatingGroup>
+
+      {/* Audio Waveform */}
+      <FloatingGroup position={[-2.2, -1.2, 0.3]} speed={0.5} phase={2.2} amplitude={0.1}>
+        
+        
+        <Html transform center occlude={false} position={[0, 0, 0.01]} distanceFactor={1.9} style={{ pointerEvents: 'none' }}>
+           <div style={{ ...softCardStyle, width: 140, height: 70, display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '0 12px' }}>
+             {[...Array(12)].map((_, i) => (
+               <div key={i} style={{ width: 4, height: Math.random() * 40 + 10, background: i % 3 === 0 ? ACCENT : '#ccc', borderRadius: 2 }} />
+             ))}
+           </div>
+        </Html>
+      </FloatingGroup>
+      
+      {/* SD Card */}
+      <FloatingGroup position={[2.2, -1.4, 0.8]} rotation={[0.2, -0.4, 0.1]} speed={0.7} phase={0.8} amplitude={0.1}>
+        
+        <mesh>
+          <RoundedBox args={[0.8, 1.2, 0.05]} radius={0.02} smoothness={2}>
+            <meshStandardMaterial color="#111" metalness={0.2} roughness={0.8} />
+          </RoundedBox>
+        </mesh>
+        <Html transform center position={[0, 0, 0.04]} distanceFactor={1.6} style={{ pointerEvents: 'none' }}>
+          <div style={{ width: 140, height: 210, background: '#222', borderRadius: 8, padding: 8, display: 'flex', flexDirection: 'column', border: '2px solid #444', boxShadow: 'inset 0 0 10px rgba(0,0,0,0.5)' }}>
+            <div style={{ background: 'linear-gradient(135deg, #FF7A1A 0%, #ff4a00 100%)', color: '#fff', fontSize: 42, fontWeight: '900', textAlign: 'center', borderRadius: 4, flex: 1, display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column' }}>
+              128<span style={{fontSize:18, marginTop: -4}}>GB</span>
+            </div>
+            <div style={{ fontSize: 16, textAlign: 'center', marginTop: 12, fontWeight: 'bold', color: '#fff', letterSpacing: 2 }}>PRO SDXC</div>
+            <div style={{ fontSize: 12, textAlign: 'center', marginTop: 4, color: '#aaa', marginBottom: 4 }}>300 MB/s</div>
+          </div>
+        </Html>
+        
+      </FloatingGroup>
+      
+    </group>
   )
 }
