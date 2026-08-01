@@ -1975,7 +1975,7 @@ textarea:focus {
 footer {
   background: var(--bg-soft);
   color: var(--muted);
-  padding: 56px 0 24px;
+  padding: 32px 0 16px;
   border-top: 1px solid var(--line)
 }
 
@@ -1983,12 +1983,22 @@ footer {
   display: grid;
   grid-template-columns: 1.6fr 1.2fr 1fr 1fr;
   gap: 32px;
-  padding-bottom: 32px
+  padding-bottom: 24px
 }
 
 .footer-grid .brand {
   display: inline-block;
-  margin-bottom: 80px;
+  margin-bottom: 24px;
+}
+
+@media (min-width: 761px) {
+  .footer-grid > div:first-child {
+    display: flex;
+    align-items: center;
+  }
+  .footer-grid > div:first-child .brand {
+    margin-bottom: 0;
+  }
 }
 
 .footer-grid p {
