@@ -123,9 +123,12 @@
 
     <!-- HERO -->
     <section class="hero">
-      <div id="crossfade-video-container" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; pointer-events: none;">
-        <video id="hero-v1" src="images/jupiter.mp4" muted playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity 1.5s ease-in-out;"></video>
-        <video id="hero-v2" src="images/jupiter.mp4" muted playsinline style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out;"></video>
+      <div id="crossfade-video-container"
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; pointer-events: none;">
+        <video id="hero-v1" src="images/jupiter.mp4" muted playsinline
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity 1.5s ease-in-out;"></video>
+        <video id="hero-v2" src="images/jupiter.mp4" muted playsinline
+          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out;"></video>
       </div>
       <script>
         document.addEventListener("DOMContentLoaded", () => {
@@ -136,16 +139,16 @@
           const crossfadeDuration = 1.5; // seconds before end to crossfade
 
           // Attempt autoplay on load
-          v1.play().catch(()=>{});
+          v1.play().catch(() => { });
 
           function checkCrossfade() {
             if (current.duration && (current.duration - current.currentTime <= crossfadeDuration)) {
               // Time to crossfade
               next.currentTime = 0;
-              next.play().catch(()=>{});
+              next.play().catch(() => { });
               next.style.opacity = '1';
               current.style.opacity = '0';
-              
+
               // Swap references
               const temp = current;
               current = next;
@@ -156,7 +159,9 @@
           requestAnimationFrame(checkCrossfade);
         });
       </script>
-      <div style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background: radial-gradient(58% 52% at 50% 50%, rgba(9, 5, 3, .55), transparent 72%), linear-gradient(180deg, rgba(9, 5, 3, .42), rgba(9, 5, 3, .12) 42%, rgba(9, 5, 3, .6)); pointer-events: none;"></div>
+      <div
+        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background: radial-gradient(58% 52% at 50% 50%, rgba(9, 5, 3, .55), transparent 72%), linear-gradient(180deg, rgba(9, 5, 3, .42), rgba(9, 5, 3, .12) 42%, rgba(9, 5, 3, .6)); pointer-events: none;">
+      </div>
       <div class="hero-bg" style="z-index: 1;">
         <div class="starfield"></div>
         <span class="star s1"></span><span class="star s2"></span><span class="star s3"></span><span
@@ -168,7 +173,6 @@
         <h1 class="reveal">markasına değer verenlerin<br><span class="o">sosyal medya ajansı</span></h1>
         <div class="btns reveal d2">
           <a href="#iletisim" class="btn btn-primary">Ücretsiz Görüşme Planla</a>
-          <a href="#multiPhoneShowcase" class="btn btn-ghost">İşlerimizi İncele</a>
         </div>
       </div>
       <div class="trust-row reveal d3">
@@ -314,6 +318,76 @@
       </div>
     </section>
 
+    <!-- SCROLL MARQUEE -->
+    <section class="scroll-marquee-section">
+      <div class="marquee-row marquee-row-left">
+        <div class="marquee-content">
+          <span>DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span class="highlight">DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span>DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span class="highlight-outline">DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span>DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span class="highlight">DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span>DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span class="highlight-outline">DIGITOLMEDIA</span>
+        </div>
+      </div>
+      <div class="marquee-row marquee-row-right">
+        <div class="marquee-content">
+          <span>DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span class="highlight-outline">DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span>DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span class="highlight">DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span>DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span class="highlight-outline">DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span>DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span class="highlight">DIGITOLMEDIA</span>
+        </div>
+      </div>
+    </section>
+
     <!-- HİZMETLER -->
     <section id="hizmetler" class="section">
       <div class="wrap">
@@ -401,57 +475,194 @@
 
 
     <!-- PAKETLER -->
-    <section id="paketler" class="section section-soft">
+    <section id="paketler" class="section pkg-section">
       <div class="wrap">
         <div class="eyebrow">PAKETLER</div>
-        <h2 class="sec-title">Profesyonel<br>Tasarım Ekibi</h2>
-        <p class="sec-sub">İhtiyacınıza göre ölçeklenen, sabit aylık ücretli paketler. Fiyatlar markanızın kapsamına
-          göre özelleştirilir.</p>
+        <h2 class="sec-title">İhtiyacınıza uygun<br>çözümü birlikte belirleyelim.</h2>
+        <p class="sec-sub">Her marka farklıdır. Bu nedenle paketlerimiz ihtiyaçlarınıza göre şekillenir ve
+          ölçeklenebilir.</p>
+      </div>
 
-        <div class="packages">
-          <div class="pkg">
-            <div class="pkg-spotlight" aria-hidden="true"></div>
-            <h4>Başlangıç</h4>
-            <p class="pkg-desc">Sosyal medyada düzenli görünürlük isteyen küçük markalar için.</p>
-            <ul>
-              <li>Aylık 8 sosyal medya görseli</li>
-              <li>Story şablonları</li>
-              <li>Aylık 1 revizyon turu</li>
-              <li>E-posta ile destek</li>
-            </ul>
-            <a href="https://wa.me/905359360667" target="_blank" rel="noopener" class="btn btn-outline">Fiyat Teklifi
-              Al</a>
-          </div>
-          <div class="pkg featured">
-            <div class="pkg-spotlight" aria-hidden="true"></div>
-            <div class="pkg-badge">En Çok Tercih Edilen</div>
-            <h4>Büyüme</h4>
-            <p class="pkg-desc">Sosyal medya + marka kimliğini birlikte büyütmek isteyen markalar için.</p>
-            <ul>
-              <li>Aylık 16 sosyal medya görseli</li>
-              <li>Logo & marka kimliği güncellemeleri</li>
-              <li>Afiş & kampanya tasarımları</li>
-              <li>Aylık 3 revizyon turu</li>
-              <li>Öncelikli destek</li>
-            </ul>
-            <a href="https://wa.me/905359360667" target="_blank" rel="noopener" class="btn btn-primary">Fiyat Teklifi
-              Al</a>
-          </div>
-          <div class="pkg">
-            <div class="pkg-spotlight" aria-hidden="true"></div>
-            <h4>Kurumsal</h4>
-            <p class="pkg-desc">Animasyon ve video prodüksiyonuna da ihtiyaç duyan büyüyen markalar için.</p>
-            <ul>
-              <li>Sınırsız sosyal medya görseli</li>
-              <li>Logo & kurumsal kimlik paketi</li>
-              <li>Animasyon & video kurgu</li>
-              <li>Özel görev takip panosu</li>
-              <li>Aylık strateji görüşmesi</li>
-            </ul>
-            <a href="https://wa.me/905359360667" target="_blank" rel="noopener" class="btn btn-outline">Fiyat Teklifi
-              Al</a>
+      <div class="pkg-carousel-container">
+        <!-- Navigation Arrows -->
+        <button class="pkg-arrow pkg-prev" aria-label="Önceki Paket">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M15 18l-6-6 6-6" />
+          </svg>
+        </button>
+
+        <div class="pkg-carousel-track-wrapper">
+          <div class="pkg-carousel-track">
+
+            <!-- Card 1: Başlangıç -->
+            <div class="pkg-card active">
+              <div class="pkg-card-inner">
+                <h3 class="pkg-name">Başlangıç</h3>
+                <p class="pkg-for">Yeni başlayan markalar için.</p>
+                <div class="pkg-divider"></div>
+                <ul class="pkg-features">
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Web Tasarım
+                  </li>
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Sosyal Medya Yönetimi
+                  </li>
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Grafik Tasarım
+                  </li>
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Aylık Raporlama
+                  </li>
+                </ul>
+                <a href="https://wa.me/905359360667" target="_blank" rel="noopener"
+                  class="btn btn-primary pkg-cta">Fiyat Teklifi Al</a>
+              </div>
+            </div>
+
+            <!-- Card 2: Profesyonel -->
+            <div class="pkg-card">
+              <div class="pkg-card-inner">
+                <div class="pkg-badge">En Çok Tercih Edilen</div>
+                <h3 class="pkg-name">Profesyonel</h3>
+                <p class="pkg-for">Büyümek isteyen işletmeler için.</p>
+                <div class="pkg-divider"></div>
+                <ul class="pkg-features">
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Web Tasarım
+                  </li>
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Sosyal Medya Yönetimi
+                  </li>
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Grafik Tasarım
+                  </li>
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Video Prodüksiyon
+                  </li>
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    SEO Optimizasyonu
+                  </li>
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Aylık Raporlama
+                  </li>
+                </ul>
+                <a href="https://wa.me/905359360667" target="_blank" rel="noopener"
+                  class="btn btn-primary pkg-cta">Fiyat Teklifi Al</a>
+              </div>
+            </div>
+
+            <!-- Card 3: Kurumsal -->
+            <div class="pkg-card">
+              <div class="pkg-card-inner">
+                <h3 class="pkg-name">Kurumsal</h3>
+                <p class="pkg-for">Kurumsal ihtiyaçlar için.</p>
+                <div class="pkg-divider"></div>
+                <ul class="pkg-features">
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Web Tasarım
+                  </li>
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Sosyal Medya Yönetimi
+                  </li>
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Grafik Tasarım
+                  </li>
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Video Prodüksiyon
+                  </li>
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Drone Çekimi
+                  </li>
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    SEO Optimizasyonu
+                  </li>
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Aylık Raporlama
+                  </li>
+                </ul>
+                <a href="https://wa.me/905359360667" target="_blank" rel="noopener"
+                  class="btn btn-primary pkg-cta">Fiyat Teklifi Al</a>
+              </div>
+            </div>
+
           </div>
         </div>
+
+        <button class="pkg-arrow pkg-next" aria-label="Sonraki Paket">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+            stroke-linejoin="round">
+            <path d="M9 18l6-6-6-6" />
+          </svg>
+        </button>
       </div>
     </section>
 
@@ -463,51 +674,77 @@
         <p class="sec-sub">Digitol Ajans ile çalışan markaların yorumları.</p>
       </div>
 
-      <div class="testi-wrap">
-        <div class="testi-track" id="testiTrack">
-          <div class="testi">
-            <p>"Rentav olarak sosyal medya görsellerimizin kalitesi ve teslim hızı fark yarattı. Digitol Ajans, kendi
-              ekibimizin bir parçası gibi çalışıyor."</p>
-            <div class="testi-who"><img src="images/logos/rentav.png" alt="Rentav" class="testi-logo">
-              <div><b>Rentav</b><span>Filo & Oto Kiralama</span></div>
-            </div>
-          </div>
-          <div class="testi">
-            <p>"Kuantum Eğitim olarak LGS dönemi kampanyalarımızda ürettikleri postlar hem estetik hem de dönüşüm
-              odaklıydı. Teslim tarihlerine tam uyum sağladılar."</p>
-            <div class="testi-who"><img src="images/logos/kuantum.png" alt="Kuantum Eğitim" class="testi-logo">
-              <div><b>Kuantum Eğitim Kurumları</b><span>Eğitim</span></div>
-            </div>
-          </div>
-          <div class="testi">
-            <p>"Altoran İnşaat için tasarlanan kurumsal logo, markamızı tam olarak yansıtıyor. Süreç boyunca her
-              revizyon isteğimize hızlıca cevap aldık."</p>
-            <div class="testi-who"><img src="images/logos/altoran.png" alt="Altoran İnşaat" class="testi-logo">
-              <div><b>Altoran İnşaat</b><span>İnşaat</span></div>
-            </div>
-          </div>
-          <div class="testi">
-            <p>"Bug Doctor olarak logomuzun akılda kalıcılığı sayesinde müşteri tanınırlığımız arttı. Digitol ekibi
-              markamızı gerçekten anladı."</p>
-            <div class="testi-who"><img src="images/logos/bug_doctor.png" alt="Bug Doctor" class="testi-logo">
-              <div><b>Bug Doctor</b><span>İlaçlama</span></div>
-            </div>
-          </div>
-          <div class="testi">
-            <p>"Mr. Barber olarak şık ve zarif logomuz, salonumuzun kurumsal kimliğine tam oturdu. Profesyonel ve dakik
-              bir ekip."</p>
-            <div class="testi-who"><img src="images/logos/mr_barber.png" alt="Mr. Barber" class="testi-logo">
-              <div><b>Mr. Barber</b><span>Erkek Kuaförü</span></div>
-            </div>
-          </div>
-          <div class="testi">
-            <p>"Olventia Suites için hazırlanan premium logo tasarımı, konaklama deneyimimizin lüks algısını doğrudan
-              güçlendirdi."</p>
-            <div class="testi-who"><img src="images/logos/olventia.png" alt="Olventia Suites" class="testi-logo">
-              <div><b>Olventia Suites</b><span>Konaklama & Turizm</span></div>
+      <div class="testi-bento-grid">
+        <!-- 1. Rentav (Wide) -->
+        <div class="testi-card testi-wide">
+          <div class="quote-mark">“</div>
+          <p>"Rentav olarak sosyal medya görsellerimizin kalitesi ve teslim hızı fark yarattı. Digitol Ajans, kendi
+            ekibimizin bir parçası gibi çalışıyor."</p>
+          <div class="testi-who">
+            <img src="images/logos/rentav.png" alt="Rentav" class="testi-logo">
+            <div>
+              <b>Rentav</b>
+              <span>Filo & Oto Kiralama</span>
             </div>
           </div>
         </div>
+
+        <!-- 2. Kuantum Eğitim Kurumları -->
+        <div class="testi-card">
+          <div class="quote-mark">“</div>
+          <p>"Kuantum Eğitim olarak LGS dönemi kampanyalarımızda ürettikleri postlar hem estetik hem de dönüşüm
+            odaklıydı. Teslim tarihlerine tam uyum sağladılar."</p>
+          <div class="testi-who">
+            <img src="images/logos/kuantum.png" alt="Kuantum Eğitim" class="testi-logo">
+            <div>
+              <b>Kuantum Eğitim Kurumları</b>
+              <span>Eğitim</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 3. Altoran İnşaat -->
+        <div class="testi-card">
+          <div class="quote-mark">“</div>
+          <p>"Altoran İnşaat için tasarlanan kurumsal logo, markamızı tam olarak yansıtıyor. Süreç boyunca her revizyon
+            isteğimize hızlıca cevap aldık."</p>
+          <div class="testi-who">
+            <img src="images/logos/altoran.png" alt="Altoran İnşaat" class="testi-logo">
+            <div>
+              <b>Altoran İnşaat</b>
+              <span>İnşaat</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 4. Bug Doctor -->
+        <div class="testi-card">
+          <div class="quote-mark">“</div>
+          <p>"Bug Doctor olarak logomuzun akılda kalıcılığı sayesinde müşteri tanınırlığımız arttı. Digitol ekibi
+            markamızı gerçekten anladı."</p>
+          <div class="testi-who">
+            <img src="images/logos/bug_doctor.png" alt="Bug Doctor" class="testi-logo">
+            <div>
+              <b>Bug Doctor</b>
+              <span>İlaçlama</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- 5. Mr. Barber -->
+        <div class="testi-card">
+          <div class="quote-mark">“</div>
+          <p>"Mr. Barber olarak şık ve zarif logomuz, salonumuzun kurumsal kimliğine tam oturdu. Profesyonel ve dakik
+            bir ekip."</p>
+          <div class="testi-who">
+            <img src="images/logos/mr_barber.png" alt="Mr. Barber" class="testi-logo">
+            <div>
+              <b>Mr. Barber</b>
+              <span>Erkek Kuaförü</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -680,8 +917,6 @@
       </div>
       <div class="footer-col">
         <h5>Keşfet</h5>
-        <a href="#isler">İşler</a>
-        <a href="#neden-biz">Neden Biz</a>
         <a href="#paketler">Paketler</a>
         <a href="#sss">SSS</a>
         <a href="#iletisim">İletişim</a>
@@ -696,33 +931,38 @@
     <div class="wrap footer-copy">© 2026 Digitol Ajans. Her pikselde sanatın gücü.</div>
   </footer>
 
-  <button class="to-top" id="toTop" aria-label="Yukarı çık">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-      stroke-linejoin="round">
-      <path d="M12 19V5M6 11l6-6 6 6" />
-    </svg>
-  </button>
-
-  <!-- QUICK MEETING WIDGET -->
-  <button class="quick-meeting-btn" id="quickMeetingBtn" aria-label="Hızlı Toplantı Ayarla">
-    <span class="qm-text">Hemen Toplantı Ayarla</span>
-  </button>
-
-  <!-- QUICK MEETING MODAL -->
-  <div class="qm-modal-overlay" id="qmModalOverlay">
-    <div class="qm-modal">
-      <button class="qm-close" id="qmClose" aria-label="Kapat">&times;</button>
-      <div class="qm-header">
-        <h3>Tanışmaya Hazır Mısınız? 👋</h3>
-        <p>Bilgilerinizi bırakın, markanızı nasıl büyüteceğimizi konuşmak için sizi hemen arayalım.</p>
-      </div>
-      <form class="qm-form" id="qmForm" novalidate>
-        <input type="text" name="qm_name" placeholder="Ad Soyad" required>
-        <input type="tel" name="qm_phone" placeholder="Telefon Numaranız" required>
-        <button type="submit" class="btn btn-primary">Beni Arayın</button>
-        <p class="qm-note" id="qmNote"></p>
-      </form>
-    </div>
+  <!-- FLOATING SOCIALS & TO-TOP WIDGET -->
+  <div class="floating-socials">
+    <a href="https://wa.me/905359360667" target="_blank" rel="noopener" aria-label="WhatsApp"
+      class="fs-link fs-whatsapp">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path
+          d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
+      </svg>
+    </a>
+    <a href="https://instagram.com/digitolajans" target="_blank" rel="noopener" aria-label="Instagram"
+      class="fs-link fs-instagram">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+      </svg>
+    </a>
+    <a href="mailto:hello@digitolmedia.com" aria-label="E-posta" class="fs-link fs-email">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
+        <polyline points="22,6 12,13 2,6" />
+      </svg>
+    </a>
+    <button class="to-top" id="toTop" aria-label="Yukarı çık">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"
+        stroke-linejoin="round">
+        <path d="M12 19V5M6 11l6-6 6 6" />
+      </svg>
+    </button>
   </div>
 
   <script src="js/main.js"></script>

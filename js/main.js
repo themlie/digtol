@@ -132,7 +132,7 @@ const revealSelectors = [
   '.eyebrow', '.sec-title', '.sec-sub',
   '.why-grid p', '.save-card',
   '.svc', '.pkg',
-  '.testi', '.faq-item',
+  '.testi-card', '.faq-item',
   '.cline', '#contactForm',
   '.marquee-label'
 ];
@@ -140,7 +140,7 @@ document.querySelectorAll(revealSelectors.join(',')).forEach(el => {
   el.classList.add('reveal');
 });
 // aynı grid içindeki kartlara kademeli gecikme ver
-document.querySelectorAll('.services, .packages, .contact-list').forEach(group => {
+document.querySelectorAll('.services, .packages, .contact-list, .testi-bento-grid').forEach(group => {
   group.querySelectorAll('.reveal').forEach((el, i) => {
     if (i % 4 === 1) el.classList.add('d1');
     else if (i % 4 === 2) el.classList.add('d2');
@@ -639,5 +639,223 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     requestAnimationFrame(updateCounter);
+  }
+});
+
+// --- SCROLL MARQUEE ANIMATION ---
+document.addEventListener('DOMContentLoaded', () => {
+  const section = document.querySelector('.scroll-marquee-section');
+  if (!section) return;
+
+  const updateMarquee = () => {
+    const rect = section.getBoundingClientRect();
+    const windowH = window.innerHeight;
+
+    if (rect.top < windowH && rect.bottom > 0) {
+      const totalDuration = windowH + rect.height;
+      const progress = (windowH - rect.top) / totalDuration;
+
+      // Adjust translation bounds for smooth scroll-bound movement
+      const baseTranslate = 400; // Shift range in pixels
+      const shiftLeft = (progress - 0.5) * -baseTranslate;
+      const shiftRight = (progress - 0.5) * baseTranslate;
+
+      section.style.setProperty('--scroll-left', `${shiftLeft}px`);
+      section.style.setProperty('--scroll-right', `${shiftRight}px`);
+    }
+  };
+
+  window.addEventListener('scroll', updateMarquee, { passive: true });
+  window.addEventListener('resize', updateMarquee, { passive: true });
+  updateMarquee();
+});
+
+// --- PACKAGES SPOTLIGHT CAROUSEL ---
+document.addEventListener('DOMContentLoaded', () => {
+  const container = document.querySelector('.pkg-carousel-container');
+  if (!container) return;
+
+  const wrapper = container.querySelector('.pkg-carousel-track-wrapper');
+  const track = container.querySelector('.pkg-carousel-track');
+  const cards = Array.from(container.querySelectorAll('.pkg-card'));
+  const prevBtn = container.querySelector('.pkg-prev');
+  const nextBtn = container.querySelector('.pkg-next');
+
+  let activeIndex = 0; // "Başlangıç" is index 0 and active by default
+  let isDragging = false;
+  let startX = 0;
+  let currentTranslate = 0;
+  let prevTranslate = 0;
+
+  const updateCarousel = () => {
+    const wrapperWidth = wrapper.offsetWidth;
+    const activeCard = cards[activeIndex];
+    if (!activeCard) return;
+    
+    const cardWidth = activeCard.offsetWidth;
+    const cardOffsetLeft = activeCard.offsetLeft;
+    
+    // Centering calculation
+    const targetTranslate = (wrapperWidth / 2) - cardOffsetLeft - (cardWidth / 2);
+    
+    track.style.transform = `translateX(${targetTranslate}px)`;
+    
+    // Update active classes
+    cards.forEach((card, index) => {
+      if (index === activeIndex) {
+        card.classList.add('active');
+      } else {
+        card.classList.remove('active');
+      }
+    });
+
+    // Disable/enable arrows appropriately
+    if (prevBtn) prevBtn.style.opacity = activeIndex === 0 ? '0.3' : '1';
+    if (nextBtn) nextBtn.style.opacity = activeIndex === cards.length - 1 ? '0.3' : '1';
+  };
+
+  const goToSlide = (index) => {
+    if (index < 0 || index >= cards.length) return;
+    activeIndex = index;
+    updateCarousel();
+  };
+
+  // Click handler for arrows
+  if (prevBtn) {
+    prevBtn.addEventListener('click', () => {
+      if (activeIndex > 0) goToSlide(activeIndex - 1);
+    });
+  }
+
+  if (nextBtn) {
+    nextBtn.addEventListener('click', () => {
+      if (activeIndex < cards.length - 1) goToSlide(activeIndex + 1);
+    });
+  }
+
+  // Click on side cards to select them
+  cards.forEach((card, index) => {
+    card.addEventListener('click', (e) => {
+      if (index !== activeIndex) {
+        e.preventDefault();
+        goToSlide(index);
+      }
+    });
+  });
+
+  // Touch and Mouse Drag Events
+  const dragStart = (e) => {
+    isDragging = true;
+    startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+    const style = window.getComputedStyle(track);
+    const matrix = new DOMMatrix(style.transform);
+    prevTranslate = matrix.m41;
+    track.style.transition = 'none';
+  };
+
+  const dragMove = (e) => {
+    if (!isDragging) return;
+    const currentX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
+    const diff = currentX - startX;
+    currentTranslate = prevTranslate + diff;
+    track.style.transform = `translateX(${currentTranslate}px)`;
+  };
+
+  const dragEnd = () => {
+    if (!isDragging) return;
+    isDragging = false;
+    track.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
+    
+    // Determine whether to switch slides based on drag distance
+    const wrapperWidth = wrapper.offsetWidth;
+    const activeCard = cards[activeIndex];
+    const cardWidth = activeCard.offsetWidth;
+    const cardOffsetLeft = activeCard.offsetLeft;
+    const standardCenterTranslate = (wrapperWidth / 2) - cardOffsetLeft - (cardWidth / 2);
+    
+    const diff = currentTranslate - standardCenterTranslate;
+    const threshold = cardWidth / 4;
+
+    if (diff < -threshold && activeIndex < cards.length - 1) {
+      goToSlide(activeIndex + 1);
+    } else if (diff > threshold && activeIndex > 0) {
+      goToSlide(activeIndex - 1);
+    } else {
+      goToSlide(activeIndex);
+    }
+  };
+
+  wrapper.addEventListener('touchstart', dragStart, { passive: true });
+  wrapper.addEventListener('touchmove', dragMove, { passive: true });
+  wrapper.addEventListener('touchend', dragEnd);
+
+  wrapper.addEventListener('mousedown', dragStart);
+  wrapper.addEventListener('mousemove', dragMove);
+  wrapper.addEventListener('mouseup', dragEnd);
+  wrapper.addEventListener('mouseleave', dragEnd);
+
+  // Keyboard navigation
+  window.addEventListener('keydown', (e) => {
+    const rect = container.getBoundingClientRect();
+    if (rect.top < window.innerHeight && rect.bottom > 0) {
+      if (e.key === 'ArrowLeft' && activeIndex > 0) {
+        goToSlide(activeIndex - 1);
+      } else if (e.key === 'ArrowRight' && activeIndex < cards.length - 1) {
+        goToSlide(activeIndex + 1);
+      }
+    }
+  });
+
+  // Handle resizing to keep active card centered
+  window.addEventListener('resize', updateCarousel);
+
+  // Initial call
+  setTimeout(updateCarousel, 100);
+});
+
+// --- CUSTOM CURSOR IMPLEMENTATION ---
+document.addEventListener('DOMContentLoaded', () => {
+  // Only execute on devices that support hover (desktops)
+  if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    const cursor = document.createElement('div');
+    cursor.className = 'custom-cursor';
+    document.body.appendChild(cursor);
+
+    let mouseX = 0;
+    let mouseY = 0;
+    let posX = 0;
+    let posY = 0;
+
+    document.addEventListener('mousemove', (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+    });
+
+    const tick = () => {
+      // Lerp follow effect
+      posX += (mouseX - posX) * 0.18;
+      posY += (mouseY - posY) * 0.18;
+      cursor.style.transform = `translate3d(${posX}px, ${posY}px, 0) translate(-50%, -50%)`;
+      requestAnimationFrame(tick);
+    };
+    requestAnimationFrame(tick);
+
+    // Hover effect on clickable elements using event delegation
+    document.addEventListener('mouseover', (e) => {
+      const target = e.target;
+      if (target.closest('a, button, .btn, input, textarea, [role="button"], .pkg-card, .fs-link, .to-top, .svc-link, .menu-top')) {
+        cursor.classList.add('hover');
+      } else {
+        cursor.classList.remove('hover');
+      }
+    });
+
+    // Hide cursor when leaving window
+    document.addEventListener('mouseleave', () => {
+      cursor.style.opacity = '0';
+    });
+    document.addEventListener('mouseenter', () => {
+      cursor.style.opacity = '1';
+    });
   }
 });
