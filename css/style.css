@@ -4987,11 +4987,13 @@ footer {
 }
 
 .rc-camera-img {
-  position: relative;
-  width: 190px;
-  height: auto;
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  border-radius: 50%;
+  object-fit: cover;
   z-index: 2;
-  filter: drop-shadow(0 15px 30px rgba(17, 19, 24, 0.15));
+  filter: drop-shadow(0 10px 24px rgba(17, 19, 24, 0.1));
   transition: transform 0.4s ease;
 }
 
