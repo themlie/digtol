@@ -172,7 +172,7 @@ if ('IntersectionObserver' in window) {
 }
 
 // hizmet & paket kartları: imleç takipli spotlight + 3D tilt (dokunmatik/reduced-motion'da devre dışı)
-const tiltCards = document.querySelectorAll('.svc, .pkg');
+const tiltCards = document.querySelectorAll('.svc, .pkg-card');
 const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 const isCoarsePointer = window.matchMedia('(pointer: coarse)').matches;
 if (tiltCards.length && !prefersReducedMotion && !isCoarsePointer) {
@@ -670,147 +670,76 @@ document.addEventListener('DOMContentLoaded', () => {
   updateMarquee();
 });
 
-// --- PACKAGES SPOTLIGHT CAROUSEL ---
+// --- PACKAGES SPOTLIGHT CAROUSEL (3D OVERLAPPING STACK) ---
 document.addEventListener('DOMContentLoaded', () => {
   const container = document.querySelector('.pkg-carousel-container');
   if (!container) return;
 
-  const wrapper = container.querySelector('.pkg-carousel-track-wrapper');
-  const track = container.querySelector('.pkg-carousel-track');
   const cards = Array.from(container.querySelectorAll('.pkg-card'));
   const prevBtn = container.querySelector('.pkg-prev');
   const nextBtn = container.querySelector('.pkg-next');
 
-  let activeIndex = 0; // "Başlangıç" is index 0 and active by default
-  let isDragging = false;
-  let startX = 0;
-  let currentTranslate = 0;
-  let prevTranslate = 0;
+  let activeIndex = 1; // "Büyüme" (index 1) is active/center by default
 
-  const updateCarousel = () => {
-    const wrapperWidth = wrapper.offsetWidth;
-    const activeCard = cards[activeIndex];
-    if (!activeCard) return;
-    
-    const cardWidth = activeCard.offsetWidth;
-    const cardOffsetLeft = activeCard.offsetLeft;
-    
-    // Centering calculation
-    const targetTranslate = (wrapperWidth / 2) - cardOffsetLeft - (cardWidth / 2);
-    
-    track.style.transform = `translateX(${targetTranslate}px)`;
-    
-    // Update active classes
+  const updateStack = () => {
     cards.forEach((card, index) => {
+      // Clear existing positions
+      card.classList.remove('pkg-left', 'pkg-center', 'pkg-right', 'active');
+      
+      const leftIndex = (activeIndex - 1 + cards.length) % cards.length;
+      const rightIndex = (activeIndex + 1) % cards.length;
+
       if (index === activeIndex) {
-        card.classList.add('active');
-      } else {
-        card.classList.remove('active');
+        card.classList.add('pkg-center', 'active');
+      } else if (index === leftIndex) {
+        card.classList.add('pkg-left');
+      } else if (index === rightIndex) {
+        card.classList.add('pkg-right');
       }
     });
-
-    // Disable/enable arrows appropriately
-    if (prevBtn) prevBtn.style.opacity = activeIndex === 0 ? '0.3' : '1';
-    if (nextBtn) nextBtn.style.opacity = activeIndex === cards.length - 1 ? '0.3' : '1';
   };
 
-  const goToSlide = (index) => {
-    if (index < 0 || index >= cards.length) return;
-    activeIndex = index;
-    updateCarousel();
-  };
+  // Click on side cards to bring them to center
+  cards.forEach((card, index) => {
+    card.addEventListener('click', () => {
+      if (index !== activeIndex) {
+        activeIndex = index;
+        updateStack();
+      }
+    });
+  });
 
-  // Click handler for arrows
+  // Arrow navigation
   if (prevBtn) {
     prevBtn.addEventListener('click', () => {
-      if (activeIndex > 0) goToSlide(activeIndex - 1);
+      activeIndex = (activeIndex - 1 + cards.length) % cards.length;
+      updateStack();
     });
   }
 
   if (nextBtn) {
     nextBtn.addEventListener('click', () => {
-      if (activeIndex < cards.length - 1) goToSlide(activeIndex + 1);
+      activeIndex = (activeIndex + 1) % cards.length;
+      updateStack();
     });
   }
-
-  // Click on side cards to select them
-  cards.forEach((card, index) => {
-    card.addEventListener('click', (e) => {
-      if (index !== activeIndex) {
-        e.preventDefault();
-        goToSlide(index);
-      }
-    });
-  });
-
-  // Touch and Mouse Drag Events
-  const dragStart = (e) => {
-    isDragging = true;
-    startX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-    const style = window.getComputedStyle(track);
-    const matrix = new DOMMatrix(style.transform);
-    prevTranslate = matrix.m41;
-    track.style.transition = 'none';
-  };
-
-  const dragMove = (e) => {
-    if (!isDragging) return;
-    const currentX = e.type.includes('touch') ? e.touches[0].clientX : e.clientX;
-    const diff = currentX - startX;
-    currentTranslate = prevTranslate + diff;
-    track.style.transform = `translateX(${currentTranslate}px)`;
-  };
-
-  const dragEnd = () => {
-    if (!isDragging) return;
-    isDragging = false;
-    track.style.transition = 'transform 0.6s cubic-bezier(0.16, 1, 0.3, 1)';
-    
-    // Determine whether to switch slides based on drag distance
-    const wrapperWidth = wrapper.offsetWidth;
-    const activeCard = cards[activeIndex];
-    const cardWidth = activeCard.offsetWidth;
-    const cardOffsetLeft = activeCard.offsetLeft;
-    const standardCenterTranslate = (wrapperWidth / 2) - cardOffsetLeft - (cardWidth / 2);
-    
-    const diff = currentTranslate - standardCenterTranslate;
-    const threshold = cardWidth / 4;
-
-    if (diff < -threshold && activeIndex < cards.length - 1) {
-      goToSlide(activeIndex + 1);
-    } else if (diff > threshold && activeIndex > 0) {
-      goToSlide(activeIndex - 1);
-    } else {
-      goToSlide(activeIndex);
-    }
-  };
-
-  wrapper.addEventListener('touchstart', dragStart, { passive: true });
-  wrapper.addEventListener('touchmove', dragMove, { passive: true });
-  wrapper.addEventListener('touchend', dragEnd);
-
-  wrapper.addEventListener('mousedown', dragStart);
-  wrapper.addEventListener('mousemove', dragMove);
-  wrapper.addEventListener('mouseup', dragEnd);
-  wrapper.addEventListener('mouseleave', dragEnd);
 
   // Keyboard navigation
   window.addEventListener('keydown', (e) => {
     const rect = container.getBoundingClientRect();
     if (rect.top < window.innerHeight && rect.bottom > 0) {
-      if (e.key === 'ArrowLeft' && activeIndex > 0) {
-        goToSlide(activeIndex - 1);
-      } else if (e.key === 'ArrowRight' && activeIndex < cards.length - 1) {
-        goToSlide(activeIndex + 1);
+      if (e.key === 'ArrowLeft') {
+        activeIndex = (activeIndex - 1 + cards.length) % cards.length;
+        updateStack();
+      } else if (e.key === 'ArrowRight') {
+        activeIndex = (activeIndex + 1) % cards.length;
+        updateStack();
       }
     }
   });
 
-  // Handle resizing to keep active card centered
-  window.addEventListener('resize', updateCarousel);
-
   // Initial call
-  setTimeout(updateCarousel, 100);
+  updateStack();
 });
 
 // --- CUSTOM CURSOR IMPLEMENTATION ---
@@ -858,4 +787,56 @@ document.addEventListener('DOMContentLoaded', () => {
       cursor.style.opacity = '1';
     });
   }
+});
+
+// STATISTICS STRIP ANIMATION
+document.addEventListener("DOMContentLoaded", () => {
+  const statsStrip = document.getElementById("statistics");
+  if (!statsStrip) return;
+
+  const statNumbers = statsStrip.querySelectorAll(".stat-number");
+  let animated = false;
+
+  const easeOutExpo = (t) => {
+    return t === 1 ? 1 : 1 - Math.pow(2, -10 * t);
+  };
+
+  const animateNumber = (el, target, delay) => {
+    setTimeout(() => {
+      let startTime = null;
+      const duration = 1800; // 1.8 seconds
+
+      const step = (timestamp) => {
+        if (!startTime) startTime = timestamp;
+        const progress = Math.min((timestamp - startTime) / duration, 1);
+        const currentVal = Math.floor(easeOutExpo(progress) * target);
+
+        el.textContent = currentVal || 1; // start from 1
+
+        if (progress < 1) {
+          requestAnimationFrame(step);
+        } else {
+          el.textContent = target;
+          el.classList.add("stat-scale-anim");
+        }
+      };
+      
+      requestAnimationFrame(step);
+    }, delay);
+  };
+
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+      if (entry.isIntersecting && !animated) {
+        animated = true;
+        statNumbers.forEach((numEl, index) => {
+          const target = parseInt(numEl.getAttribute("data-target"), 10);
+          animateNumber(numEl, target, index * 120);
+        });
+        observer.unobserve(statsStrip);
+      }
+    });
+  }, { threshold: 0.4 });
+
+  observer.observe(statsStrip);
 });
