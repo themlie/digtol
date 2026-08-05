@@ -840,3 +840,81 @@ document.addEventListener("DOMContentLoaded", () => {
 
   observer.observe(statsStrip);
 });
+
+// --- DRONE HUD: cinematic live-view camera interface (hizmet-drone-cekimi.html) ---
+document.addEventListener('DOMContentLoaded', () => {
+  const hud = document.getElementById('droneHud');
+  if (!hud) return;
+
+  const frame = hud.querySelector('.drone-hud-frame');
+  const img = document.getElementById('droneFootageImg');
+  const timerEl = document.getElementById('droneTimer');
+  const altEl = document.getElementById('droneAlt');
+  const spdEl = document.getElementById('droneSpd');
+  const targetEl = document.getElementById('droneTarget');
+  const targetTagEl = document.getElementById('droneTargetTag');
+  const targetLabelEl = document.getElementById('droneTargetLabel');
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // imleç paralaksı: sadece görüntü kayar, HUD sabit kalır
+  if (frame && img && !reducedMotion && window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
+    frame.addEventListener('mousemove', (e) => {
+      const rect = frame.getBoundingClientRect();
+      const px = (e.clientX - rect.left) / rect.width - 0.5;
+      const py = (e.clientY - rect.top) / rect.height - 0.5;
+      img.style.transform = `scale(1.08) translate(${-px * 12}px, ${-py * 12}px)`;
+    });
+    frame.addEventListener('mouseleave', () => {
+      img.style.transform = 'scale(1.08) translate(0, 0)';
+    });
+  }
+
+  // kayıt kronometresi, 00:01:34'ten itibaren sayar
+  let seconds = 94;
+  const formatTime = (s) => {
+    const m = Math.floor(s / 60).toString().padStart(2, '0');
+    const sec = Math.floor(s % 60).toString().padStart(2, '0');
+    return `00:${m}:${sec}`;
+  };
+  if (timerEl) {
+    setInterval(() => {
+      seconds += 1;
+      timerEl.textContent = formatTime(seconds);
+    }, 1000);
+  }
+
+  // telemetri: irtifa ve hız hafifçe dalgalanır, batarya sabit kalır
+  if (altEl && spdEl) {
+    let alt = 48;
+    let spd = 11;
+    setInterval(() => {
+      alt += (Math.random() - 0.5) * 1.4;
+      alt = Math.max(45, Math.min(51, alt));
+      spd += (Math.random() - 0.5) * 2.2;
+      spd = Math.max(7, Math.min(15, spd));
+      altEl.textContent = `${Math.round(alt)}m`;
+      spdEl.textContent = `${Math.round(spd)} km/h`;
+    }, 2400);
+  }
+
+  // hedef kilidi etiketi dönüşümlü olarak değişir
+  const targets = [
+    { tag: 'OTEL', label: 'Otel Tanıtımı' },
+    { tag: 'İNŞAAT', label: 'İnşaat Takibi' },
+    { tag: 'ETKİNLİK', label: 'Etkinlik Çekimi' },
+    { tag: 'EMLAK', label: 'Emlak Sunumu' },
+    { tag: 'TESİS', label: 'Tesis Tanıtımı' },
+  ];
+  let targetIndex = 0;
+  if (targetEl && targetTagEl && targetLabelEl) {
+    setInterval(() => {
+      targetEl.classList.add('dh-target-out');
+      setTimeout(() => {
+        targetIndex = (targetIndex + 1) % targets.length;
+        targetTagEl.textContent = targets[targetIndex].tag;
+        targetLabelEl.textContent = targets[targetIndex].label;
+        targetEl.classList.remove('dh-target-out');
+      }, 500);
+    }, 5500);
+  }
+});

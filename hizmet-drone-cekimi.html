@@ -28,7 +28,7 @@
       <a href="index.html" class="brand"><img src="images/digtol/logo-siyah.png" alt="Digitol Ajans" class="brand-logo"></a>
       <nav class="menu" id="menu">
         <div class="menu-item has-dropdown">
-          <a href="index.html#hizmetler" class="menu-top">Yeteneklerimiz <span class="caret">▾</span></a>
+          <a href="index.html#hizmetler" class="menu-top">Hizmetlerimiz <span class="caret">▾</span></a>
 
           <div class="dropdown mega-menu">
           <div class="mega-cols">
@@ -66,6 +66,7 @@
         </div>
         <a href="index.html#paketler">Paketler</a>
         <a href="index.html#sss">SSS</a>
+        <a href="kariyer-ve-staj.html">Kariyer</a>
         <a href="index.html#iletisim">İletişim</a>
       </nav>
       <div class="nav-right">
@@ -84,11 +85,7 @@
     <!-- Arka plan görseli -->
     <img src="videos/drone_cekim.png" alt="Drone Arka Plan" class="bg-media">
     <div class="wrap">
-      <div class="breadcrumb">
-        <a href="index.html">Anasayfa</a><span class="sep">&rsaquo;</span>
-        <a href="index.html#hizmetler">Yeteneklerimiz</a><span class="sep">&rsaquo;</span>
-        Drone Çekimi
-      </div>
+
       <h1>Drone Çekimi</h1>
       <p class="intro">Havadan profesyonel görüntüleme ile mekanlarınızı, etkinliklerinizi ve projelerinizi etkileyici bir bakış açısıyla tanıtıyoruz.</p>
       <div class="btns">
@@ -106,14 +103,135 @@
         <p>kareler üretiyoruz.</p>
       </div>
       
-      <div class="svc-lead" style="margin-top: 80px;">
-        <div class="eyebrow reveal">DRONE</div>
-        <h2 class="reveal">Drone Çekimi Nedir?</h2>
-        <p>Havadan çekim, bir mekanı veya projeyi hiçbir yerden görülemeyecek bir perspektiften gösterir. Bu farklı bakış açısı, markanıza anında prestij ve profesyonellik katar.</p>
-        <p>Digitol olarak otel ve tesis tanıtımından inşaat ilerleme çekimlerine, etkinlik görüntülemeden emlak sunumuna kadar profesyonel drone çekimi yapıyor, görüntüleri kurgulayarak teslim ediyoruz.</p>
+      <div class="svc-lead-grid" style="margin-top: 80px; display: grid; grid-template-columns: 1fr 1fr; gap: 50px; align-items: center;">
+        <div class="drone-hud reveal" id="droneHud">
+          <div class="drone-hud-frame">
+            <div class="drone-hud-footage">
+              <div class="drone-hud-zoom">
+                <div class="drone-hud-drift">
+                  <img src="images/dronefoto.png" alt="Canlı drone görüntüsü" class="drone-hud-img" id="droneFootageImg">
+                </div>
+              </div>
+            </div>
+
+            <div class="drone-scan-line" aria-hidden="true"></div>
+
+            <span class="dh-corner dh-corner-tl" aria-hidden="true"></span>
+            <span class="dh-corner dh-corner-tr" aria-hidden="true"></span>
+            <span class="dh-corner dh-corner-bl" aria-hidden="true"></span>
+            <span class="dh-corner dh-corner-br" aria-hidden="true"></span>
+
+            <div class="dh-hud" aria-hidden="true">
+              <div class="dh-top-left">
+                <span class="dh-brand">DIGITOL</span>
+                <span class="dh-live"><i class="dh-live-dot"></i>LIVE</span>
+                <span class="dh-sub">DRONE</span>
+              </div>
+              <div class="dh-top-right">
+                <span>4K</span><span>60 FPS</span><span>GPS LOCK</span><span>14 SAT</span>
+              </div>
+              <div class="dh-bottom-left">
+                <span class="dh-rec"><i class="dh-rec-dot"></i>REC</span>
+                <span class="dh-timer" id="droneTimer">00:01:34</span>
+              </div>
+              <div class="dh-bottom-right">
+                <div><span class="dh-label">ALT</span><span class="dh-value" id="droneAlt">48m</span></div>
+                <div><span class="dh-label">SPD</span><span class="dh-value" id="droneSpd">11 km/h</span></div>
+                <div><span class="dh-label">BAT</span><span class="dh-value" id="droneBat">91%</span></div>
+              </div>
+            </div>
+
+            <div class="dh-reticle" aria-hidden="true">
+              <span class="dh-reticle-h"></span>
+              <span class="dh-reticle-v"></span>
+            </div>
+
+            <div class="dh-target" id="droneTarget">
+              <span class="dh-target-box" id="droneTargetTag">OTEL</span>
+              <span class="dh-target-label" id="droneTargetLabel">Otel Tanıtımı</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="svc-lead-text">
+          <div class="eyebrow reveal">DRONE</div>
+          <h2 class="reveal">Drone Çekimi Nedir?</h2>
+          <p>Havadan çekim, bir mekanı veya projeyi hiçbir yerden görülemeyecek bir perspektiften gösterir. Bu farklı bakış açısı, markanıza anında prestij ve profesyonellik katar.</p>
+          <p>Digitol olarak otel ve tesis tanıtımından inşaat ilerleme çekimlerine, etkinlik görüntülemeden emlak sunumuna kadar profesyonel drone çekimi yapıyor, görüntüleri kurgulayarak teslim ediyoruz.</p>
+        </div>
       </div>
     </div>
   </section>
+
+    <!-- SCROLL MARQUEE -->
+    <section class="scroll-marquee-section">
+      <div class="marquee-row marquee-row-left">
+        <div class="marquee-content">
+          <span>DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span class="highlight">DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span>DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span class="highlight-outline">DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span>DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span class="highlight">DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span>DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span class="highlight-outline">DIGITOLMEDIA</span>
+        </div>
+      </div>
+      <div class="marquee-row marquee-row-right">
+        <div class="marquee-content">
+          <span>DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span class="highlight-outline">DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span>DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span class="highlight">DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span>DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span class="highlight-outline">DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span>DIGITOLMEDIA</span>
+          <svg class="glow-star" width="28" height="28" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.8 9.2L22 12L14.8 14.8L12 22L9.2 14.8L2 12L9.2 9.2L12 2Z" />
+          </svg>
+          <span class="highlight">DIGITOLMEDIA</span>
+        </div>
+      </div>
+    </section>
 
   <section class="section section-soft">
     <div class="wrap">
@@ -230,7 +348,7 @@
 
   <section class="section section-soft">
     <div class="wrap">
-      <div class="eyebrow reveal">DİĞER YETENEKLERİMİZ</div>
+      <div class="eyebrow reveal">DİĞER HİZMETLERİMİZ</div>
       <h2 class="sec-title reveal">İlgini Çekebilir</h2>
       <p class="sec-sub reveal">Digitol ile markanın tüm görsel dünyasını tek çatı altında büyüt.</p>
       <div class="related">
@@ -262,7 +380,7 @@
       <a href="index.html" class="brand"><img src="images/digtol/logo-siyah.png" alt="Digitol Ajans" class="brand-logo"></a>
     </div>
     <div class="footer-col">
-      <h5>Yeteneklerimiz</h5>
+      <h5>Hizmetlerimiz</h5>
       <a href="hizmet-sosyal-medya-yonetimi.html">Sosyal Medya Yönetimi</a>
       <a href="hizmet-grafik-tasarim.html">Grafik Tasarım</a>
       <a href="hizmet-video-cekim-produksiyon.html">Video Çekim ve Prodüksiyon</a>

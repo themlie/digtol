@@ -38,7 +38,7 @@ function SoftShadow({ width, height }) {
 }
 
 // ---------- bare float animation wrapper (no card, no glass) ----------
-function FloatingGroup({ position, rotation = [0, 0, 0], speed = 1, phase = 0, amplitude = 0.11, children }) {
+function FloatingGroup({ position, rotation = [0, 0, 0], speed = 1, phase = 0, amplitude = 0.11, children, ...rest }) {
   const group = useRef()
   const baseY = position[1]
 
@@ -51,7 +51,7 @@ function FloatingGroup({ position, rotation = [0, 0, 0], speed = 1, phase = 0, a
   })
 
   return (
-    <group ref={group} position={position} rotation={rotation}>
+    <group ref={group} position={position} rotation={rotation} {...rest}>
       {children}
     </group>
   )
@@ -122,7 +122,7 @@ function Phone() {
   })
 
   return (
-    <group ref={group} position={[-0.3, 1.2, 0]} rotation={[base.y, base.x, 0.015]}>
+    <group ref={group} position={[-1.8, 1.6, 0]} rotation={[base.y, base.x, 0.015]} scale={1.4}>
       <Html transform center occlude={false} position={[0, 0, 0]} distanceFactor={1.3} style={{ pointerEvents: 'none' }}>
         <CSSPhone />
       </Html>
@@ -285,18 +285,9 @@ export default function SocialScene({ domTarget }) {
 
       <Phone />
 
-      <FloatingLogo src="images/3d%20logo/insta.png" size={160} position={[-2.05, 1.2, 0.5]} width={1.4} height={1.4} speed={0.55} phase={0.2} amplitude={0.1} />
-      <FloatingLogo src="images/3d%20logo/faceboook.png" size={150} position={[2.1, 1.35, -0.35]} width={1.3} height={1.3} speed={0.5} phase={1.4} amplitude={0.1} />
-      <SvgIconCard position={[-2.15, -1.05, -0.25]} width={2.2} height={2.2} speed={0.62} phase={2.1} amplitude={0.09}>{linkedinSvg}</SvgIconCard>
-      <SvgIconCard position={[2.15, -1.15, 0.45]} width={3.4} height={3.4} speed={0.58} phase={0.8} amplitude={0.09}>{tiktokSvg}</SvgIconCard>
-
-      <SvgIconCard position={[-1.5, 2.45, 0.75]} width={1.8} height={1.8} speed={0.75} phase={0.5} amplitude={0.12}>{heartSvg}</SvgIconCard>
-      <SvgIconCard position={[-1.15, -2.0, 0.65]} width={1.8} height={1.8} speed={0.7} phase={1.9} amplitude={0.12}>{commentSvg}</SvgIconCard>
-
-      <GrowthCard position={[2.6, 0.15, -0.85]} width={1.5} height={1.05} speed={0.4} phase={0.3} amplitude={0.08} />
-      <EngagementCard position={[-2.65, 0.3, -0.75]} width={1.35} height={0.85} speed={0.42} phase={1.6} amplitude={0.08} />
-      <CalendarCard position={[0.75, -2.0, -0.55]} scale={1.3} width={1.25} height={1.1} speed={0.38} phase={2.4} amplitude={0.08} />
-      <NotificationBadge position={[1.65, 2.45, 1.15]} width={1.2} height={1.2} speed={0.9} phase={3.0} amplitude={0.1} />
+      <GrowthCard position={[1.5, 1.5, -0.5]} scale={1.6} width={1.5} height={1.05} speed={0.4} phase={0.3} amplitude={0.08} />
+      <EngagementCard position={[1.9, 0.15, -0.85]} scale={1.6} width={1.35} height={0.85} speed={0.42} phase={1.6} amplitude={0.08} />
+      <CalendarCard position={[1.4, -1.5, -0.2]} scale={1.8} width={1.25} height={1.1} speed={0.38} phase={2.4} amplitude={0.08} />
     </group>
   )
 }

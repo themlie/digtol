@@ -122,64 +122,163 @@
   </header>
 
   <main id="top">
-    <section class="section" style="padding-top: 140px; background: #4b4e53; padding-bottom: 80px;">
-      <div class="wrap" style="max-width: 800px;">
-        <h1 class="sec-title" style="text-align: center; margin-bottom: 16px; margin-top: 32px; color: #000;">Birlikte Üretelim, Birlikte Gelişelim.</h1>
-        <p class="sec-sub" style="text-align: center; margin-bottom: 48px; color: rgba(255,255,255,0.9);">Digitol'de yalnızca bir pozisyona değil, öğrenmeye ve gelişmeye açık bir ekibe katılırsın. Gerçek projelerde deneyim kazanmak ve dijital dünyada kendini geliştirmek istiyorsan, seni tanımayı sabırsızlıkla bekliyoruz.</p>
+    <section class="section" style="padding-top: 140px; background: var(--bg); padding-bottom: 120px;">
+      <div class="wrap">
+        
+        <!-- PREMIUM CTA BLOCK -->
+        <div class="premium-cta-block reveal" style="padding-top: 32px;">
+          <span class="premium-cta-subtitle">KARİYER</span>
+          <h2 class="premium-cta-headline">Birlikte üretmek için<br>ilk adımı at.</h2>
+          <div class="premium-cta-checklist reveal" style="transition-delay: 100ms;">
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Gerçek Projeler
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Güçlü Ekip
+            </span>
+            <span>
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              Sürekli Gelişim
+            </span>
+          </div>
+          <p class="premium-cta-paragraph reveal" style="transition-delay: 200ms;">
+            Digitol'de yalnızca bir pozisyona değil, öğrenmeye ve gelişmeye açık bir ekibe katılırsın. Gerçek projelerde deneyim kazanmak ve dijital dünyada kendini geliştirmek istiyorsan, seni tanımayı sabırsızlıkla bekliyoruz.
+          </p>
+        </div>
 
-        <div class="career-form-card">
-          <h3 style="color: #000; font-weight: 700; margin-bottom: 32px; text-align: center; font-size: 24px;">Digitol ekibinin bir parçası olmak ister misin?</h3>
+        <!-- NEDEN DIGITOL SECTION -->
+        <div class="why-digitol-section reveal">
+          <h2 class="why-digitol-title">Neden Digitol?</h2>
+          <div class="why-digitol-grid">
+            
+            <div class="why-digitol-item">
+              <div class="why-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2L21 5.92a2.12 2.12 0 0 0-3-3L4.5 16.5z" />
+                  <path d="m15 5 4 4" />
+                </svg>
+              </div>
+              <h3>Gerçek Projeler</h3>
+              <p>Portfolyonu geliştirecek gerçek müşteri projelerinde yer al.</p>
+            </div>
+
+            <div class="why-digitol-item">
+              <div class="why-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
+                  <circle cx="9" cy="7" r="4" />
+                  <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
+                  <path d="M16 3.13a4 4 0 0 1 0 7.75" />
+                </svg>
+              </div>
+              <h3>Mentorluk</h3>
+              <p>Deneyimli ekipten düzenli geri bildirim alarak kendini geliştir.</p>
+            </div>
+
+            <div class="why-digitol-item">
+              <div class="why-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <polyline points="22 7 13.5 15.5 8.5 10.5 2 17" />
+                  <polyline points="16 7 22 7 22 13" />
+                </svg>
+              </div>
+              <h3>Sürekli Gelişim</h3>
+              <p>Öğrenmeye açık bir ekipte yeni teknolojiler ve iş süreçleriyle deneyim kazan.</p>
+            </div>
+
+          </div>
+        </div>
+
+
+        <!-- FORM AND TIMELINE GRID -->
+        <div class="career-layout">
+          
+          <!-- FORM COLUMN -->
+          <div class="career-form-col reveal">
+            <div class="career-form-card">
+              <h3 style="color: var(--ink); font-weight: 700; margin-bottom: 32px; text-align: center; font-size: 24px;">Digitol ekibinin bir parçası olmak ister misin?</h3>
           <form action="https://formsubmit.co/hello@digitolmedia.com" method="POST" class="career-form">
             <input type="hidden" name="_subject" value="Yeni Kariyer/Staj Başvurusu!">
             <input type="hidden" name="_captcha" value="false">
             <input type="hidden" name="_next" value="https://digitolmedia.com">
 
             <div class="form-grid">
-              <input type="text" name="Ad_Soyad" placeholder="Ad-Soyad" required class="form-input">
-              <input type="tel" name="Telefon" placeholder="Telefon" required class="form-input">
+              <div class="form-floating">
+                <input type="text" id="Ad_Soyad" name="Ad_Soyad" placeholder=" " required class="form-input">
+                <label for="Ad_Soyad">Ad-Soyad</label>
+              </div>
+              <div class="form-floating">
+                <input type="tel" id="Telefon" name="Telefon" placeholder=" " required class="form-input">
+                <label for="Telefon">Telefon</label>
+              </div>
 
-              <input type="email" name="E_Posta" placeholder="E-Posta" required class="form-input">
-              <select name="Basvuru_Turu" required class="form-select">
-                <option value="" disabled selected>Başvuru Türü</option>
-                <option value="İş">İş</option>
-                <option value="Staj">Staj</option>
-                <option value="Freelance">Freelance</option>
-              </select>
+              <div class="form-floating">
+                <input type="email" id="E_Posta" name="E_Posta" placeholder=" " required class="form-input">
+                <label for="E_Posta">E-Posta</label>
+              </div>
+              <div class="form-floating">
+                <select id="Basvuru_Turu" name="Basvuru_Turu" required class="form-select">
+                  <option value="" disabled selected></option>
+                  <option value="İş">İş</option>
+                  <option value="Staj">Staj</option>
+                  <option value="Freelance">Freelance</option>
+                </select>
+                <label for="Basvuru_Turu">Başvuru Türü</label>
+              </div>
 
-              <select name="Basvurdugun_Pozisyon" required class="form-select">
-                <option value="" disabled selected>Başvurduğun Pozisyon?</option>
-                <option value="Grafik Tasarım">Grafik Tasarım</option>
-                <option value="Sosyal Medya Yönetimi">Sosyal Medya Yönetimi</option>
-                <option value="Video Kurgu / Prodüksiyon">Video Kurgu / Prodüksiyon</option>
-                <option value="Metin Yazarlığı">Metin Yazarlığı</option>
-                <option value="Web Geliştirme">Web Geliştirme</option>
-              </select>
+              <div class="form-floating">
+                <select id="Basvurdugun_Pozisyon" name="Basvurdugun_Pozisyon" required class="form-select">
+                  <option value="" disabled selected></option>
+                  <option value="Grafik Tasarım">Grafik Tasarım</option>
+                  <option value="Sosyal Medya Yönetimi">Sosyal Medya Yönetimi</option>
+                  <option value="Video Kurgu / Prodüksiyon">Video Kurgu / Prodüksiyon</option>
+                  <option value="Metin Yazarlığı">Metin Yazarlığı</option>
+                  <option value="Web Geliştirme">Web Geliştirme</option>
+                </select>
+                <label for="Basvurdugun_Pozisyon">Başvurduğun Pozisyon?</label>
+              </div>
 
-              <select name="Ajans_Deneyimi" required class="form-select">
-                <option value="" disabled selected>Ajans Deneyimin Var Mı?</option>
-                <option value="Evet">Evet</option>
-                <option value="Hayır">Hayır</option>
-              </select>
+              <div class="form-floating">
+                <select id="Ajans_Deneyimi" name="Ajans_Deneyimi" required class="form-select">
+                  <option value="" disabled selected></option>
+                  <option value="Evet">Evet</option>
+                  <option value="Hayır">Hayır</option>
+                </select>
+                <label for="Ajans_Deneyimi">Ajans Deneyimin Var Mı?</label>
+              </div>
 
-              <select name="Yabanci_Dil" required class="form-select">
-                <option value="" disabled selected>Yabancı Dil Seviyen?</option>
-                <option value="Başlangıç">Başlangıç</option>
-                <option value="Orta">Orta</option>
-                <option value="İleri">İleri</option>
-              </select>
+              <div class="form-floating">
+                <select id="Yabanci_Dil" name="Yabanci_Dil" required class="form-select">
+                  <option value="" disabled selected></option>
+                  <option value="Başlangıç">Başlangıç</option>
+                  <option value="Orta">Orta</option>
+                  <option value="İleri">İleri</option>
+                </select>
+                <label for="Yabanci_Dil">Yabancı Dil Seviyen?</label>
+              </div>
 
-              <select name="En_Buyuk" required class="form-select">
-                <option value="" disabled selected>En Büyük?</option>
-                <option value="Fenerbahçe">Fenerbahçe</option>
-                <option value="Galatasaray">Galatasaray</option>
-                <option value="Beşiktaşk">Beşiktaşk</option>
-              </select>
+              <div class="form-floating">
+                <select id="En_Buyuk" name="En_Buyuk" required class="form-select">
+                  <option value="" disabled selected></option>
+                  <option value="Fenerbahçe">Fenerbahçe</option>
+                  <option value="Galatasaray">Galatasaray</option>
+                  <option value="Beşiktaşk">Beşiktaşk</option>
+                </select>
+                <label for="En_Buyuk">En Büyük?</label>
+              </div>
             </div>
 
-            <input type="text" name="Kendini_Anlat" placeholder="Kendini Anlat (Sadece 1 Cümle)" required
-              class="form-input full-width">
-            <input type="url" name="Portfolyo" placeholder="Linkedin veya Portfolyo Linki" required
-              class="form-input full-width">
+            <div class="form-floating full-width">
+              <input type="text" id="Kendini_Anlat" name="Kendini_Anlat" placeholder=" " required class="form-input">
+              <label for="Kendini_Anlat">Kendini Anlat (Sadece 1 Cümle)</label>
+            </div>
+            
+            <div class="form-floating full-width">
+              <input type="url" id="Portfolyo" name="Portfolyo" placeholder=" " required class="form-input">
+              <label for="Portfolyo">Linkedin veya Portfolyo Linki</label>
+            </div>
 
             <label class="checkbox-container">
               <input type="checkbox" name="KVKK" required>
@@ -191,9 +290,74 @@
               Politikası ve KVKK Metni'ni okuyup anladım. Kişisel verilerimin 6698 sayılı KVKK Kanunu'na göre
               işlenmesini ve şirketin dışarıdan hizmet aldığı üçüncü kişilere aktarılmasını kabul ediyorum.</p>
 
-            <button type="submit" class="btn btn-primary btn-block">Başvuruyu Gönder</button>
+            <button type="submit" class="btn-submit-premium">
+              <span>Başvuruyu Gönder</span>
+              <svg class="btn-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12h14M12 5l7 7-7 7"/>
+              </svg>
+            </button>
+            <div class="trust-message">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                <path d="m9 12 2 2 4-4"/>
+              </svg>
+              Başvuruların gizlilikle değerlendirilir ve en kısa sürede tarafına dönüş yapılır.
+            </div>
           </form>
-        </div>
+            </div>
+          </div>
+          
+          <!-- TIMELINE COLUMN -->
+          <div class="career-timeline-col reveal">
+            <div class="career-timeline">
+              <h3 class="timeline-title">Başvuru Süreci</h3>
+              <div class="timeline-steps">
+                
+                <div class="timeline-step active">
+                  <div class="step-indicator">1</div>
+                  <div class="step-content">
+                    <h4>Başvurunu Gönder</h4>
+                    <p>Formu eksiksiz doldur.</p>
+                  </div>
+                </div>
+
+                <div class="timeline-step">
+                  <div class="step-indicator">2</div>
+                  <div class="step-content">
+                    <h4>Ön Değerlendirme</h4>
+                    <p>Portfolyon ve formun incelenir.</p>
+                  </div>
+                </div>
+
+                <div class="timeline-step">
+                  <div class="step-indicator">3</div>
+                  <div class="step-content">
+                    <h4>Kısa Görüşme</h4>
+                    <p>Seninle kısa bir tanışma toplantısı.</p>
+                  </div>
+                </div>
+
+                <div class="timeline-step">
+                  <div class="step-indicator">4</div>
+                  <div class="step-content">
+                    <h4>Değerlendirme</h4>
+                    <p>Gerekirse teknik/tasarım testi.</p>
+                  </div>
+                </div>
+
+                <div class="timeline-step">
+                  <div class="step-indicator">5</div>
+                  <div class="step-content">
+                    <h4>Sonuç</h4>
+                    <p>Olumlu veya olumsuz dönüş.</p>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+
+        </div> <!-- /career-layout -->
       </div>
     </section>
   </main>
