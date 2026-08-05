@@ -124,45 +124,7 @@
 
     <!-- HERO -->
     <section class="hero">
-      <div id="crossfade-video-container"
-        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; overflow: hidden; pointer-events: none;">
-        <video id="hero-v1" src="images/jupiter.mp4" muted playsinline
-          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 1; transition: opacity 1.5s ease-in-out;"></video>
-        <video id="hero-v2" src="images/jupiter.mp4" muted playsinline
-          style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0; transition: opacity 1.5s ease-in-out;"></video>
-      </div>
-      <script>
-        document.addEventListener("DOMContentLoaded", () => {
-          const v1 = document.getElementById("hero-v1");
-          const v2 = document.getElementById("hero-v2");
-          if (!v1 || !v2) return;
-          let current = v1, next = v2;
-          const crossfadeDuration = 1.5; // seconds before end to crossfade
 
-          // Attempt autoplay on load
-          v1.play().catch(() => { });
-
-          function checkCrossfade() {
-            if (current.duration && (current.duration - current.currentTime <= crossfadeDuration)) {
-              // Time to crossfade
-              next.currentTime = 0;
-              next.play().catch(() => { });
-              next.style.opacity = '1';
-              current.style.opacity = '0';
-
-              // Swap references
-              const temp = current;
-              current = next;
-              next = temp;
-            }
-            requestAnimationFrame(checkCrossfade);
-          }
-          requestAnimationFrame(checkCrossfade);
-        });
-      </script>
-      <div
-        style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 0; background: radial-gradient(58% 52% at 50% 50%, rgba(9, 5, 3, .55), transparent 72%), linear-gradient(180deg, rgba(9, 5, 3, .42), rgba(9, 5, 3, .12) 42%, rgba(9, 5, 3, .6)); pointer-events: none;">
-      </div>
       <div class="hero-bg" style="z-index: 1;">
         <div class="starfield"></div>
         <span class="star s1"></span><span class="star s2"></span><span class="star s3"></span><span
@@ -208,7 +170,7 @@
     </section>
 
     <!-- HİZMETLER -->
-    <section id="hizmetler" class="section">
+    <section id="hizmetler" class="section" style="padding-top: 60px;">
       <div class="wrap">
         <div class="eyebrow">HİZMETLERİMİZ</div>
         <h2 class="sec-title">Neler Yapıyoruz</h2>
@@ -509,35 +471,35 @@
                       stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    Aylık 8 sosyal medya görseli
+                    Ayda 4 Profesyonel Reels Çekimi
                   </li>
                   <li>
                     <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
                       stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    Logo & marka kimliği güncellemeleri
+                    8 Sosyal Medya İçeriği Tasarımı
                   </li>
                   <li>
                     <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
                       stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    Afiş & kampanya tasarımları
+                    Aylık İçerik Planlaması
                   </li>
                   <li>
                     <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
                       stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    Aylık 1 revizyon turu
+                    Özel Gün Paylaşımları
                   </li>
                   <li>
                     <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
                       stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    Standart destek
+                    Aylık Performans Raporu
                   </li>
                 </ul>
                 <a href="https://wa.me/905359360667" target="_blank" rel="noopener"
@@ -550,7 +512,7 @@
               <div class="pkg-card-inner">
                 <div class="pkg-spotlight" aria-hidden="true"></div>
                 <div class="pkg-badge">En Çok Tercih Edilen</div>
-                <h3 class="pkg-name">Büyüme</h3>
+                <h3 class="pkg-name">Profesyonel</h3>
                 <p class="pkg-for">Sosyal medya + marka kimliğini birlikte büyütmek isteyen markalar için.</p>
                 <div class="pkg-divider"></div>
                 <ul class="pkg-features">
@@ -559,35 +521,42 @@
                       stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    Aylık 16 sosyal medya görseli
+                    Ayda 8 Profesyonel Reels Çekimi
                   </li>
                   <li>
                     <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
                       stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    Logo & marka kimliği güncellemeleri
+                    10 Sosyal Medya İçeriği Tasarımı
                   </li>
                   <li>
                     <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
                       stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    Afiş & kampanya tasarımları
+                    Meta Reklam Yönetimi
                   </li>
                   <li>
                     <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
                       stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    Aylık 3 revizyon turu
+                    Aylık İçerik Planlaması
                   </li>
                   <li>
                     <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
                       stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    Öncelikli destek
+                    Özel Gün Paylaşımları
+                  </li>
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Aylık Performans Raporu
                   </li>
                 </ul>
                 <a href="https://wa.me/905359360667" target="_blank" rel="noopener"
@@ -608,35 +577,49 @@
                       stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    Sınırsız sosyal medya görseli
+                    Ayda 12 Profesyonel Reels Çekimi
                   </li>
                   <li>
                     <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
                       stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    Logo & kurumsal kimlik tasarımları
+                    12 Sosyal Medya İçeriği Tasarımı
                   </li>
                   <li>
                     <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
                       stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    Animasyon & hareketli grafikler
+                    Drone Çekimi (Aylık 1 Gün)
                   </li>
                   <li>
                     <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
                       stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    Özel görev panosu yönetimi
+                    Meta Reklam Yönetimi
                   </li>
                   <li>
                     <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
                       stroke-linecap="round" stroke-linejoin="round">
                       <polyline points="20 6 9 17 4 12" />
                     </svg>
-                    Aylık strateji toplantıları
+                    Aylık İçerik Planlaması
+                  </li>
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Özel Gün Paylaşımları
+                  </li>
+                  <li>
+                    <svg class="check-svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3"
+                      stroke-linecap="round" stroke-linejoin="round">
+                      <polyline points="20 6 9 17 4 12" />
+                    </svg>
+                    Aylık Performans Raporu
                   </li>
                 </ul>
                 <a href="https://wa.me/905359360667" target="_blank" rel="noopener"
